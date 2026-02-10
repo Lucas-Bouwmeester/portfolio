@@ -1,0 +1,793 @@
+body {
+  font-family: monospace;
+  margin: 0;
+  padding: 0;
+  overflow: hidden !important;
+  font-family: sans-serif;
+  font-family: monospace;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
+}
+
+.compass {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 6vw;
+  height: 6vw;
+  color: rgb(48, 174, 200);
+  z-index: 1000;
+  rotate: 135deg;
+}
+
+.compass-ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+.needle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.3vw;
+  height: 2vw;
+  background: currentColor;
+  transform-origin: 50% 100%;
+  transform: translate(-50%, -100%) rotate(45deg);
+  transition: transform 0.4s ease;
+}
+
+.compass-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.6vw;
+  height: 0.6vw;
+  background: currentColor;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.6s ease;
+}
+
+.panel.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.homepage-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+  font-family: monospace;
+  font-weight: 900;
+  text-align: center;
+  top: 2%;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+}
+.homepage-container .funfact {
+  position: relative;
+  top: 4%;
+}
+.homepage-container .funfact pre {
+  color: rgb(0, 0, 0);
+  font-size: clamp(0.01px, 0.26vw, 1000px);
+  transition: transform 0.2s ease;
+}
+.homepage-container .funfact pre:hover {
+  transform: scale(1.5);
+}
+.homepage-container #snow {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+.homepage-container .flake {
+  position: absolute;
+  top: -20px;
+  color: rgb(0, 0, 0);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  animation-name: fall;
+  animation-timing-function: linear;
+}
+@keyframes fall {
+  to {
+    transform: translateY(95vh);
+  }
+}
+.homepage-container .title {
+  /* clamp(MIN, PREFERRED, MAX) */
+  font-size: clamp(0.4rem, 1vw, 2vw);
+  transition: transform 0.2s ease;
+}
+.homepage-container .title:hover {
+  transform: scale(1.16);
+}
+.homepage-container .container {
+  position: relative;
+  top: -28px;
+}
+.homepage-container .container .undertitle {
+  font-size: clamp(0.2rem, 0.4vw, 1vw);
+  transition: transform 0.2s ease;
+}
+.homepage-container .container .undertitle:hover {
+  transform: scale(1.14);
+}
+.homepage-container .container .name {
+  font-size: clamp(0.2rem, 0.4vw, 1vw);
+  position: relative;
+  top: -20px;
+  left: 0;
+  transition: transform 0.2s ease;
+}
+.homepage-container .container .name:hover {
+  transform: scale(1.1);
+}
+.homepage-container .context-container {
+  position: absolute;
+  bottom: 45px;
+  left: 39vw;
+}
+.homepage-container .context-container #context {
+  cursor: pointer;
+}
+.homepage-container .context-container #context pre {
+  font-size: clamp(0.01px, 0.33vw, 18px);
+  transition: transform 0.2s ease;
+}
+.homepage-container .context-container #context pre:hover {
+  transform: scale(1.2);
+}
+.homepage-container #context-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: none;
+  z-index: 9998;
+}
+.homepage-container #context-overlay #spotlight {
+  position: absolute;
+  border-radius: 12px;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+.homepage-container #context-overlay #textBoxContext {
+  position: absolute;
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border-radius: 12px 12px 0 0;
+  font-size: clamp(0.2rem, 1.1vw, 10vw);
+  z-index: 9999;
+  width: 15vw;
+}
+.homepage-container #context-overlay #textBoxContext button {
+  cursor: pointer;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 0 0 12px 12px;
+  position: absolute;
+  right: 0;
+  margin-top: 20px;
+  width: calc(15vw + 40px);
+  padding: 10px;
+  font-size: clamp(0.2rem, 1vw, 10vw);
+}
+.homepage-container .patchnotes-container {
+  position: absolute;
+  bottom: 14%;
+  right: -40px;
+}
+.homepage-container .patchnotes-container #patchnotes {
+  display: block;
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  font-size: clamp(0.2rem, 0.4vw, 1vw);
+  font-weight: bolder;
+  cursor: pointer;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  width: 80%;
+  transition: transform 0.2s ease;
+}
+.homepage-container .patchnotes-container #patchnotes:hover {
+  transform: scale(1.1);
+}
+.homepage-container .patchnotes-container #popup {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  width: 300px;
+  height: 400px;
+  border-radius: 16px;
+  padding: 0 25px 30px 25px;
+  border: 2px solid rgb(0, 0, 0);
+  position: absolute;
+  bottom: 0;
+  right: 60px;
+  z-index: 9999;
+  display: none;
+  margin: 0 !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.homepage-container .patchnotes-container #popup h1 {
+  text-align: left !important;
+  margin-left: 25px;
+}
+.homepage-container .patchnotes-container #popup p {
+  margin: 8px 0;
+}
+.homepage-container .patchnotes-container #popup .cross {
+  right: 10px;
+  top: -10px;
+  position: absolute;
+  cursor: pointer;
+  rotate: 45deg;
+  font-size: 78px;
+}
+.homepage-container .credit-container {
+  position: absolute;
+  bottom: 6%;
+  right: 0;
+}
+.homepage-container .credit-container #credit {
+  display: block;
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  font-size: clamp(0.2rem, 0.3vw, 1vw);
+  font-weight: bolder;
+  cursor: pointer;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  width: 80%;
+  transition: transform 0.2s ease;
+}
+.homepage-container .credit-container #credit:hover {
+  transform: scale(1.14);
+}
+.homepage-container .credit-container #credit-popup {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  width: 300px;
+  height: 400px;
+  border-radius: 16px;
+  padding: 0 25px 30px 25px;
+  border: 2px solid rgb(0, 0, 0);
+  position: absolute;
+  bottom: 57px;
+  right: 20px;
+  z-index: 9999;
+  display: none;
+  margin: 0 !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.homepage-container .credit-container #credit-popup h1 {
+  text-align: left !important;
+  margin-left: 25px;
+}
+.homepage-container .credit-container #credit-popup h2 {
+  margin: 8px 0;
+  text-align: left !important;
+  margin-left: 25px;
+}
+.homepage-container .credit-container #credit-popup h3 {
+  margin: 8px 0;
+  text-align: left !important;
+  margin-left: 25px;
+}
+.homepage-container .credit-container #credit-popup p {
+  margin: 8px 0;
+  text-align: left !important;
+  margin-left: 25px;
+}
+.homepage-container .credit-container #credit-popup .cross {
+  right: 10px;
+  top: -10px;
+  position: absolute;
+  cursor: pointer;
+  rotate: 45deg;
+  font-size: 78px;
+}
+.homepage-container .campfire-wrap {
+  position: absolute;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: monospace;
+  left: -10%;
+  bottom: 10px;
+}
+.homepage-container .campfire {
+  color: rgb(0, 0, 0);
+  font-size: clamp(0.2rem, 1.3vw, 11vw);
+}
+.homepage-container .smoke {
+  position: absolute;
+  bottom: 300px;
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  animation: rise linear infinite;
+}
+.homepage-container .smoke:nth-child(1) {
+  left: 65%;
+  animation-delay: -2s;
+  animation-duration: 8s;
+}
+.homepage-container .smoke:nth-child(2) {
+  left: 72%;
+  animation-delay: -5s;
+  animation-duration: 10s;
+}
+.homepage-container .smoke:nth-child(3) {
+  left: 68%;
+  animation-delay: -1s;
+  animation-duration: 9s;
+}
+.homepage-container .smoke:nth-child(4) {
+  left: 75%;
+  animation-delay: -7s;
+  animation-duration: 11s;
+}
+.homepage-container .smoke:nth-child(5) {
+  left: 66%;
+  animation-delay: -3s;
+  animation-duration: 8.5s;
+}
+.homepage-container .smoke:nth-child(6) {
+  left: 71%;
+  animation-delay: -6s;
+  animation-duration: 10.5s;
+}
+.homepage-container .smoke:nth-child(7) {
+  left: 73%;
+  animation-delay: -4s;
+  animation-duration: 9.5s;
+}
+.homepage-container .smoke:nth-child(8) {
+  left: 69%;
+  animation-delay: -8s;
+  animation-duration: 12s;
+}
+.homepage-container .smoke:nth-child(9) {
+  left: 74%;
+  animation-delay: -9s;
+  animation-duration: 11.5s;
+}
+.homepage-container .smoke:nth-child(10) {
+  left: 67%;
+  animation-delay: -10s;
+  animation-duration: 13s;
+}
+.homepage-container .smoke:nth-child(11) {
+  left: 63%;
+  animation-delay: -3.7s;
+  animation-duration: 12.4s;
+}
+.homepage-container .smoke:nth-child(12) {
+  left: 78%;
+  animation-delay: -11.2s;
+  animation-duration: 15.1s;
+}
+.homepage-container .smoke:nth-child(13) {
+  left: 70%;
+  animation-delay: -5.6s;
+  animation-duration: 9.8s;
+}
+.homepage-container .smoke:nth-child(14) {
+  left: 82%;
+  animation-delay: -14.3s;
+  animation-duration: 17.6s;
+}
+.homepage-container .smoke:nth-child(15) {
+  left: 61%;
+  animation-delay: -8.9s;
+  animation-duration: 13.7s;
+}
+.homepage-container .smoke:nth-child(16) {
+  left: 76%;
+  animation-delay: -2.4s;
+  animation-duration: 10.2s;
+}
+.homepage-container .smoke:nth-child(17) {
+  left: 69%;
+  animation-delay: -12.8s;
+  animation-duration: 16.3s;
+}
+.homepage-container .smoke:nth-child(18) {
+  left: 84%;
+  animation-delay: -6.1s;
+  animation-duration: 14.9s;
+}
+.homepage-container .smoke:nth-child(19) {
+  left: 66%;
+  animation-delay: -15.5s;
+  animation-duration: 18.2s;
+}
+.homepage-container .smoke:nth-child(20) {
+  left: 74%;
+  animation-delay: -9.3s;
+  animation-duration: 11.6s;
+}
+@keyframes rise {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-90vh);
+  }
+}
+
+.situation-container {
+  background: #ffffff;
+  background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(50, 50, 50) 100%);
+  width: 100vw;
+  height: 101vh;
+}
+.situation-container .situation #textBox {
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  padding: 20px;
+  border: 2px solid rgb(255, 255, 255) !important;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  position: absolute;
+  left: 50px;
+  bottom: 50px;
+  width: calc(100vw - 600px - 250px);
+  height: auto;
+  transition: transform 0.2s ease;
+}
+.situation-container .situation #textBox:hover {
+  transform: scale(1.02);
+}
+.situation-container .about-me {
+  position: fixed;
+  top: 0;
+  right: -660px;
+  width: 600px;
+  height: calc(100vh - 40px);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  padding: 20px 20px 20px 40px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.7);
+  border-left: 1px solid rgb(0, 0, 0);
+  transition: right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+.situation-container .about-me .panel-toggle {
+  position: absolute;
+  left: -60px;
+  top: 250px;
+  width: 60px;
+  height: calc(80vh - 250px);
+  background-color: black;
+  writing-mode: sideways-rl;
+  border: 2px solid rgb(0, 0, 0);
+  border-right: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: left 0.5s ease;
+  z-index: 1001;
+}
+.situation-container .about-me .about-me.active .panel-toggle {
+  left: -60px;
+}
+.situation-container .about-me .about-me-container .up-container {
+  position: absolute;
+  width: 660px;
+  height: calc(100vh - 60%);
+  top: 0;
+  left: 0;
+  padding: 7px 15px 15px 15px;
+  font-size: 16px;
+}
+.situation-container .about-me .about-me-container .up-container .pfp {
+  position: absolute;
+  right: 20%;
+  bottom: 0;
+}
+.situation-container .about-me .about-me-container .up-container .pfp pre {
+  color: rgb(0, 0, 0);
+  font-size: clamp(0.01px, 0.54vh, 1000px);
+}
+.situation-container .about-me .about-me-container .up-container .copy {
+  position: absolute;
+  padding: 0 !important;
+  margin: 0 !important;
+  left: -15px;
+  bottom: 3vh;
+  width: 10vw;
+  height: 11.5vw;
+  background-color: transparent;
+  border: none;
+}
+.situation-container .about-me .about-me-container .up-container .copy pre {
+  color: rgb(0, 0, 0);
+  font-size: clamp(0.001px, 0.17vh, 1000px);
+  margin: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.situation-container .about-me .about-me-container .up-container .copy pre:hover {
+  transform: scale(1.1);
+}
+.situation-container .about-me .about-me-container .down-container {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 60%;
+  top: 40%;
+  left: 0;
+  border-top: 2px solid rgb(0, 0, 0);
+}
+.situation-container .about-me .about-me-container .down-container .buttons {
+  width: 25%;
+  background: rgb(255, 255, 255);
+  padding: 20px;
+}
+.situation-container .about-me .about-me-container .down-container .buttons button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  transition: transform 0.2s ease;
+}
+.situation-container .about-me .about-me-container .down-container .buttons button:hover {
+  transform: scale(1.07);
+}
+.situation-container .about-me .about-me-container .down-container .content {
+  width: 75%;
+  padding: 20px;
+  border-left: 1px solid rgb(0, 0, 0);
+  overflow-x: scroll;
+}
+.situation-container .about-me .about-me-container .down-container .info {
+  display: none;
+}
+.situation-container .about-me.active {
+  right: 0;
+}
+
+.crossroad1-container {
+  background: linear-gradient(180deg, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 100%);
+  position: absolute;
+  top: -10px;
+  width: 100vw;
+  height: calc(101vh + 10px);
+  color: rgb(255, 255, 255);
+}
+.crossroad1-container .monster-container {
+  position: relative;
+  width: 50%;
+  height: 100vh;
+  color: rgb(255, 255, 255);
+}
+.crossroad1-container .monster-container .portal {
+  position: absolute;
+  top: 10%;
+  left: 2%;
+  font-size: clamp(0.1rem, 0.7vw, 1rem);
+  transition: transform 0.2s ease;
+}
+.crossroad1-container .monster-container .portal:hover {
+  transform: scale(1.03);
+}
+.crossroad1-container .monster-container .portal .title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+}
+.crossroad1-container .monster-container .portal .title pre {
+  margin: 0;
+  color: rgb(255, 255, 255) !important;
+}
+.crossroad1-container .monster-container .portal .title .realm {
+  position: absolute;
+  top: 19%;
+  left: -14%;
+  font-size: clamp(0.01vw, 0.3vw, 0.5rem);
+  transition: transform 0.2s ease;
+  text-align: center;
+}
+.crossroad1-container .monster-container .portal .title .realm:hover {
+  transform: scale(1.1);
+}
+.crossroad1-container .monster-container .portal .title .of {
+  position: absolute;
+  top: 19%;
+  left: 40%;
+  font-size: clamp(0.1rem, 0.3vw, 0.5rem);
+  transition: transform 0.2s ease;
+  text-align: center;
+}
+.crossroad1-container .monster-container .portal .title .of:hover {
+  transform: scale(1.1);
+}
+.crossroad1-container .monster-container .portal .title .monsters {
+  position: absolute;
+  top: 30%;
+  left: 23%;
+  font-size: clamp(0.1rem, 0.3vw, 0.5rem);
+  transition: transform 0.2s ease;
+  text-align: center;
+}
+.crossroad1-container .monster-container .portal .title .monsters:hover {
+  transform: scale(1.1);
+}
+.crossroad1-container .monster-container .portal .title button {
+  position: absolute;
+  top: 100%;
+  left: 28%;
+  width: 15%;
+  height: 30%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 3vw;
+}
+.crossroad1-container .never-container {
+  position: absolute;
+  top: 10px;
+  left: 30vw;
+  width: 30vw;
+  height: 100%;
+}
+.crossroad1-container .never-container .cliff {
+  position: absolute;
+  bottom: -21px;
+  left: 14vw;
+  color: rgb(255, 255, 255);
+  font-size: clamp(0.1rem, 0.8vw, 1rem);
+}
+.crossroad1-container .never-container .cliffy {
+  position: absolute;
+  bottom: -8px;
+  left: -8vw;
+  color: rgb(255, 255, 255);
+  font-size: clamp(0.1rem, 0.8vw, 1rem);
+}
+.crossroad1-container .never-container button {
+  background-color: transparent;
+  border: none;
+  width: 12vw;
+  height: 16vh;
+  position: absolute;
+  bottom: 10px;
+  left: 3.3vw;
+  cursor: pointer;
+}
+.crossroad1-container .never-container button pre {
+  color: white !important;
+  position: absolute;
+  bottom: 0px;
+  left: -1.45vw;
+  font-size: clamp(0.1rem, 0.25vw, 1rem);
+  transition: transform 0.2s ease;
+}
+.crossroad1-container .never-container button pre:hover {
+  transform: scale(1.05);
+}
+.crossroad1-container .before-container {
+  position: absolute;
+  width: 50%;
+  height: 100vh;
+  left: 50%;
+  top: 10px;
+}
+.crossroad1-container .before-container .skyscraper {
+  position: absolute;
+  bottom: -35px;
+  right: -80%;
+}
+.crossroad1-container .before-container .skyscraper .title {
+  position: absolute;
+  left: 23.7%;
+  top: -8%;
+}
+.crossroad1-container .before-container .skyscraper .title pre {
+  font-size: clamp(0.1rem, 0.5vw, 0.8rem);
+  transition: transform 0.2s ease;
+}
+.crossroad1-container .before-container .skyscraper .title pre:hover {
+  transform: scale(1.07);
+}
+.crossroad1-container .before-container .skyscraper pre {
+  color: rgb(255, 255, 255);
+  font-size: clamp(0.1rem, 0.78vw, 1rem);
+}
+.crossroad1-container .before-container .skyscraper .poster {
+  position: absolute;
+  left: 36.6%;
+  top: 11%;
+  background-color: rgb(255, 255, 255);
+}
+.crossroad1-container .before-container .skyscraper .poster pre {
+  color: rgb(0, 0, 0);
+  font-size: clamp(0.01rem, 0.11vw, 0.3rem);
+}
+.crossroad1-container .before-container .skyscraper button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.crossroad1-container .before-container .skyscraper .enter {
+  position: absolute;
+  left: 36.6%;
+  top: 51%;
+}
+.crossroad1-container .before-container .skyscraper .enter pre {
+  color: rgb(255, 255, 255);
+  font-size: clamp(0.01rem, 0.3vw, 1rem);
+  transition: transform 0.2s ease;
+}
+.crossroad1-container .before-container .skyscraper .enter pre:hover {
+  transform: scale(1.09);
+}
+
+.realmOfMonster1-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.neverRealm1-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.beforeRealm1-container {
+  position: absolute;
+  top: -1.2%;
+  right: 11%;
+  background-color: rgb(255, 255, 255);
+}
+.beforeRealm1-container pre {
+  color: rgb(0, 0, 0);
+  font-size: clamp(0.01rem, 1.2vw, 1rem);
+}
+.beforeRealm1-container .banner {
+  position: absolute;
+  top: 27%;
+  left: -60%;
+  background-color: rgb(255, 255, 255);
+  rotate: 90deg;
+}
+.beforeRealm1-container .banner pre {
+  color: rgb(0, 0, 0);
+  font-size: clamp(0.01rem, 0.83vw, 1rem);
+}/*# sourceMappingURL=index.css.map */
