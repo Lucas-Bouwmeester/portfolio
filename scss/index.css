@@ -10,45 +10,68 @@ body {
   user-select: none; /* Standard syntax */
 }
 
+::-webkit-scrollbar {
+  width: 1vw;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #353535;
+}
+
 .compass {
   position: fixed;
-  top: 30px;
-  right: 30px;
-  width: 6vw;
-  height: 6vw;
-  color: rgb(48, 174, 200);
+  z-index: 9000;
+  top: 1.5vw;
+  right: 1.5vw;
+  width: 15%;
+  aspect-ratio: 1/1;
+  background: radial-gradient(circle at center, rgb(240, 240, 240) 0%, rgba(250, 250, 250, 0.85) 40%, rgba(255, 255, 255, 0.5) 100%, transparent 100%);
+  border-radius: 50%;
+  color: black;
   z-index: 1000;
-  rotate: 135deg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(135deg);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.compass:hover {
+  transform: scale(1.1) rotate(135deg);
 }
 
 .compass-ring {
   position: absolute;
-  inset: 0;
-  border: 2px solid currentColor;
-  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  font-size: clamp(0.01px, 0.12vw, 1000px);
+  transform: rotate(-135deg);
+  z-index: 9000;
 }
 
 .needle {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0.3vw;
-  height: 2vw;
-  background: currentColor;
   transform-origin: 50% 100%;
-  transform: translate(-50%, -100%) rotate(45deg);
-  transition: transform 0.4s ease;
-}
-
-.compass-center {
-  position: absolute;
-  top: 50%;
+  transform: translate(-50%, -100%) rotate(145deg);
   left: 50%;
-  width: 0.6vw;
-  height: 0.6vw;
-  background: currentColor;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+  top: 50%;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  font-size: clamp(0.01px, 0.2vw, 1000px);
+  transition: transform 0.4s ease;
+  pointer-events: none;
 }
 
 .panel {
@@ -166,7 +189,6 @@ body {
 }
 .homepage-container #context-overlay #spotlight {
   position: absolute;
-  border-radius: 12px;
   transition: all 0.4s ease;
   pointer-events: none;
 }
@@ -193,10 +215,74 @@ body {
   padding: 10px;
   font-size: clamp(0.2rem, 1vw, 10vw);
 }
+.homepage-container .insights-container {
+  position: absolute;
+  bottom: 6.7%;
+  left: 70%;
+}
+.homepage-container .insights-container #insights {
+  display: block;
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  font-size: clamp(0.2rem, 0.3vw, 1vw);
+  font-weight: bolder;
+  cursor: pointer;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  width: 80%;
+  z-index: 9;
+  transition: transform 0.2s ease;
+}
+.homepage-container .insights-container #insights:hover {
+  transform: scale(1.14);
+}
+.homepage-container .insights-container #insights-popup {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  width: 25vw;
+  height: 45vh;
+  border-radius: 16px;
+  padding: 0 25px 30px 25px;
+  border: 2px solid rgb(0, 0, 0);
+  position: absolute;
+  bottom: 0;
+  right: -28vw;
+  z-index: 9999;
+  display: none;
+  margin: 0 !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.homepage-container .insights-container #insights-popup h1 {
+  text-align: left !important;
+  margin-left: 25px;
+}
+.homepage-container .insights-container #insights-popup h2 {
+  margin: 8px 0;
+  text-align: left !important;
+  margin-left: 25px;
+}
+.homepage-container .insights-container #insights-popup h3 {
+  margin: 8px 0;
+  text-align: left !important;
+  margin-left: 25px;
+}
+.homepage-container .insights-container #insights-popup p {
+  margin: 8px 0;
+  text-align: left !important;
+  margin-left: 25px;
+}
+.homepage-container .insights-container #insights-popup .cross {
+  right: 10px;
+  top: -10px;
+  position: absolute;
+  cursor: pointer;
+  rotate: 45deg;
+  font-size: 78px;
+}
 .homepage-container .patchnotes-container {
   position: absolute;
-  bottom: 14%;
-  right: -40px;
+  bottom: 16%;
+  right: 0vw;
 }
 .homepage-container .patchnotes-container #patchnotes {
   display: block;
@@ -215,14 +301,14 @@ body {
 .homepage-container .patchnotes-container #popup {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
-  width: 300px;
-  height: 400px;
+  width: 25vw;
+  height: 45vh;
   border-radius: 16px;
   padding: 0 25px 30px 25px;
   border: 2px solid rgb(0, 0, 0);
   position: absolute;
-  bottom: 0;
-  right: 60px;
+  bottom: -10vh;
+  right: 2vw;
   z-index: 9999;
   display: none;
   margin: 0 !important;
@@ -247,7 +333,7 @@ body {
 .homepage-container .credit-container {
   position: absolute;
   bottom: 6%;
-  right: 0;
+  right: 0.5vw;
 }
 .homepage-container .credit-container #credit {
   display: block;
@@ -266,14 +352,14 @@ body {
 .homepage-container .credit-container #credit-popup {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
-  width: 300px;
-  height: 400px;
+  width: 25vw;
+  height: 45vh;
   border-radius: 16px;
   padding: 0 25px 30px 25px;
   border: 2px solid rgb(0, 0, 0);
   position: absolute;
-  bottom: 57px;
-  right: 20px;
+  bottom: 0;
+  right: 1.5vw;
   z-index: 9999;
   display: none;
   margin: 0 !important;
@@ -312,8 +398,8 @@ body {
   width: -moz-fit-content;
   width: fit-content;
   font-family: monospace;
-  left: -10%;
-  bottom: 10px;
+  left: -12%;
+  bottom: -2%;
 }
 .homepage-container .campfire {
   color: rgb(0, 0, 0);
@@ -321,8 +407,8 @@ body {
 }
 .homepage-container .smoke {
   position: absolute;
-  bottom: 300px;
-  font-size: 18px;
+  bottom: 95%;
+  font-size: clamp(0.2rem, 1.3vw, 11vw);
   color: rgb(0, 0, 0);
   animation: rise linear infinite;
 }
@@ -435,322 +521,444 @@ body {
   }
 }
 
-.situation-container {
+.information-container {
   background: #ffffff;
   background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(50, 50, 50) 100%);
   width: 100vw;
   height: 101vh;
 }
-.situation-container .situation #textBox {
+.information-container #gust-container {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  height: 90vh;
+  width: 200vw;
+  overflow: hidden;
+}
+.information-container .gust {
+  position: absolute;
+  color: rgb(192, 192, 192);
+  font-weight: bold;
+  line-height: 0.7;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  white-space: pre;
+  text-align: center;
+  z-index: 1000;
+}
+.information-container .information {
+  position: absolute;
+  z-index: 400;
+  width: 100vw;
+  height: 100vh;
+}
+.information-container .information #textBox {
   cursor: pointer;
   color: rgb(255, 255, 255);
-  font-size: 20px;
   padding: 20px;
   border: 2px solid rgb(255, 255, 255) !important;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
   position: absolute;
-  left: 50px;
-  bottom: 50px;
-  width: calc(100vw - 600px - 250px);
+  right: 2%;
+  bottom: 5%;
+  width: calc(45% - 24vh);
   height: auto;
-  transition: transform 0.2s ease;
+  transition: left 0.5s ease, transform 0.2s ease;
+  z-index: 10;
+  white-space: pre-wrap !important;
+  font-size: 1.4vw;
 }
-.situation-container .situation #textBox:hover {
+.information-container .information #textBox:hover {
   transform: scale(1.02);
 }
-.situation-container .about-me {
+.information-container .information .pre-container {
+  width: 100vw;
+  height: 100vh;
+}
+.information-container .information .pre-container .cliff {
+  height: 1vh;
+  width: auto;
+  position: absolute;
+  top: 0;
+  left: 141vh;
+  transform-origin: left;
+  transform: scaleX(-1);
+  font-size: 1vh;
+  text-align: center;
+  line-height: 1;
+  z-index: 5 !important;
+}
+.information-container .information .pre-container .spike {
+  position: fixed;
+  top: 58vh;
+  right: -1%;
+  font-size: 1.5vh;
+  line-height: 1;
+  text-align: right;
+  z-index: 6 !important;
+}
+.information-container .information .pre-container .person {
+  position: absolute;
+  top: 0%;
+  right: 30%;
+  z-index: 7 !important;
+}
+.information-container .information .pre-container .person pre {
+  font-size: clamp(0.1rem, 0.44vh, 0.5rem);
+  transition: transform 0.2s ease;
+  display: inline-block;
+  color: #ffffff;
+  transform-origin: top right;
+  animation: constantSwing 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  z-index: 7 !important;
+  z-index: auto;
+}
+@keyframes constantSwing {
+  0% {
+    transform: rotate(12deg);
+    top: 10px;
+  }
+  50% {
+    transform: rotate(-12deg);
+    top: 90px;
+  }
+  100% {
+    transform: rotate(12deg);
+    top: 10px;
+  }
+}
+
+.about-me {
   position: fixed;
   top: 0;
-  right: -660px;
-  width: 600px;
+  left: -54%;
+  width: 50%;
   height: calc(100vh - 40px);
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   padding: 20px 20px 20px 40px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.7);
   border-left: 1px solid rgb(0, 0, 0);
-  transition: right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  z-index: 1000;
+  transition: left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 1009;
   display: flex;
   flex-direction: column;
 }
-.situation-container .about-me .panel-toggle {
+.about-me.active {
+  left: 0;
+}
+.about-me .panel-toggle {
   position: absolute;
-  left: -60px;
-  top: 250px;
-  width: 60px;
-  height: calc(80vh - 250px);
+  right: -10vh;
+  top: 25%;
+  width: 10vh;
+  height: calc(80vh - 25%);
   background-color: black;
   writing-mode: sideways-rl;
   border: 2px solid rgb(0, 0, 0);
   border-right: none;
   color: rgb(255, 255, 255);
   cursor: pointer;
-  font-size: 20px;
+  font-size: clamp(0.01px, 4vh, 1000px);
   border-radius: 0 5px 5px 0;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   transition: left 0.5s ease;
   z-index: 1001;
 }
-.situation-container .about-me .about-me.active .panel-toggle {
-  left: -60px;
+.about-me.active .panel-toggle {
+  right: -10vh;
 }
-.situation-container .about-me .about-me-container .up-container {
+
+.about-me-container .up-container {
   position: absolute;
-  width: 660px;
-  height: calc(100vh - 60%);
+  width: 100%;
+  height: calc(100vh - 50%);
   top: 0;
   left: 0;
-  padding: 7px 15px 15px 15px;
   font-size: 16px;
+  border-bottom: 1px solid black;
 }
-.situation-container .about-me .about-me-container .up-container .pfp {
+.about-me-container .up-container .right {
   position: absolute;
-  right: 20%;
+  right: 0;
+  top: 0;
+  width: 70%;
+  height: 100%;
+  border-left: 1px solid black;
+}
+.about-me-container .up-container .right .pfp {
+  position: absolute;
   bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.situation-container .about-me .about-me-container .up-container .pfp pre {
+.about-me-container .up-container .right .pfp pre {
   color: rgb(0, 0, 0);
-  font-size: clamp(0.01px, 0.54vh, 1000px);
+  font-size: clamp(0.01px, 0.34vw, 1000px);
+  border-bottom: 3px solid black;
+  max-height: 100%;
 }
-.situation-container .about-me .about-me-container .up-container .copy {
+.about-me-container .up-container .left {
   position: absolute;
-  padding: 0 !important;
-  margin: 0 !important;
-  left: -15px;
-  bottom: 3vh;
-  width: 10vw;
-  height: 11.5vw;
+  left: 0;
+  top: 0;
+  width: 30%;
+  height: 100%;
+}
+.about-me-container .up-container .left p {
+  position: absolute;
+  top: 0;
+  padding: 10px;
+  font-size: 1.5vh;
+}
+.about-me-container .up-container .left .copy {
+  position: absolute;
+  bottom: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: transparent;
   border: none;
 }
-.situation-container .about-me .about-me-container .up-container .copy pre {
+.about-me-container .up-container .left .copy pre {
   color: rgb(0, 0, 0);
-  font-size: clamp(0.001px, 0.17vh, 1000px);
+  font-size: clamp(0.001px, 0.22vh, 1000px);
   margin: 0;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
-.situation-container .about-me .about-me-container .up-container .copy pre:hover {
+.about-me-container .up-container .left .copy pre:hover {
   transform: scale(1.1);
 }
-.situation-container .about-me .about-me-container .down-container {
+.about-me-container .down-container {
   position: absolute;
   display: flex;
   width: 100%;
-  height: 60%;
-  top: 40%;
+  height: 50%;
+  top: 50%;
   left: 0;
   border-top: 2px solid rgb(0, 0, 0);
 }
-.situation-container .about-me .about-me-container .down-container .buttons {
-  width: 25%;
+.about-me-container .down-container .buttons {
+  width: 26%;
   background: rgb(255, 255, 255);
-  padding: 20px;
+  padding: 2%;
 }
-.situation-container .about-me .about-me-container .down-container .buttons button {
+.about-me-container .down-container .buttons button {
   width: 100%;
-  padding: 10px;
+  padding: 8%;
   margin-bottom: 10px;
   cursor: pointer;
   background-color: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
+  font-size: clamp(0.001px, 1vw, 1000px);
   transition: transform 0.2s ease;
 }
-.situation-container .about-me .about-me-container .down-container .buttons button:hover {
+.about-me-container .down-container .buttons button:hover {
   transform: scale(1.07);
 }
-.situation-container .about-me .about-me-container .down-container .content {
-  width: 75%;
-  padding: 20px;
+.about-me-container .down-container .content {
+  width: 64%;
+  padding: 3%;
   border-left: 1px solid rgb(0, 0, 0);
   overflow-x: scroll;
 }
-.situation-container .about-me .about-me-container .down-container .info {
+.about-me-container .down-container .info {
   display: none;
 }
-.situation-container .about-me.active {
+
+.about-me.active {
   right: 0;
 }
 
-.crossroad1-container {
+.crossroadOfRealms-container {
   background: linear-gradient(180deg, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 100%);
-  position: absolute;
+  position: relative;
   top: -10px;
   width: 100vw;
   height: calc(101vh + 10px);
   color: rgb(255, 255, 255);
 }
-.crossroad1-container .monster-container {
-  position: relative;
-  width: 50%;
-  height: 100vh;
-  color: rgb(255, 255, 255);
-}
-.crossroad1-container .monster-container .portal {
+.crossroadOfRealms-container .internship-container {
   position: absolute;
-  top: 10%;
-  left: 2%;
-  font-size: clamp(0.1rem, 0.7vw, 1rem);
+  width: 60vw;
+  height: 100vh;
+  left: 0;
+  top: 10px;
+}
+.crossroadOfRealms-container .internship-container .skyscraper {
+  position: absolute;
+  bottom: -6%;
+  left: 5%;
+}
+.crossroadOfRealms-container .internship-container .skyscraper .title {
+  position: absolute;
+  left: 2.8%;
+  top: -8%;
+}
+.crossroadOfRealms-container .internship-container .skyscraper .title pre {
+  font-size: clamp(0.1rem, 1vh, 0.8rem);
   transition: transform 0.2s ease;
 }
-.crossroad1-container .monster-container .portal:hover {
-  transform: scale(1.03);
+.crossroadOfRealms-container .internship-container .skyscraper .title pre:hover {
+  transform: scale(1.07);
 }
-.crossroad1-container .monster-container .portal .title {
+.crossroadOfRealms-container .internship-container .skyscraper pre {
+  color: rgb(255, 255, 255);
+  font-size: clamp(0.1rem, 1.5vh, 1rem);
+}
+.crossroadOfRealms-container .internship-container .skyscraper pre .poster {
+  position: absolute;
+  left: 25.7%;
+  top: 26%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
+  width: 15%;
+  height: 31%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.crossroadOfRealms-container .internship-container .skyscraper pre .poster pre {
+  margin: 0;
+  color: rgb(0, 0, 0);
+  font-size: 0.2vh;
+}
+.crossroadOfRealms-container .internship-container .skyscraper pre button {
+  background-color: transparent;
+  border: none;
+}
+.crossroadOfRealms-container .internship-container .skyscraper pre .enter {
+  position: absolute;
+  top: 53.5%;
+  left: 25.5%;
+  transform: translate(-50%, -50%);
+}
+.crossroadOfRealms-container .internship-container .skyscraper pre .enter pre {
+  color: rgb(255, 255, 255);
+  font-size: 0.65vh;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+.crossroadOfRealms-container .internship-container .skyscraper pre .enter pre:hover {
+  transform: scale(1.04);
+}
+.crossroadOfRealms-container .internship-container .skyscraper .sign {
+  position: absolute;
+  bottom: 80%;
+  left: 36.5%;
+}
+.crossroadOfRealms-container .internship-container .skyscraper .sign pre {
+  font-size: clamp(0.1rem, 1.2vh, 1rem);
+  transition: transform 0.2s ease;
+}
+.crossroadOfRealms-container .internship-container .skyscraper .sign .title {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 50%;
+  height: 100%;
 }
-.crossroad1-container .monster-container .portal .title pre {
+.crossroadOfRealms-container .internship-container .skyscraper .sign .title pre {
   margin: 0;
   color: rgb(255, 255, 255) !important;
 }
-.crossroad1-container .monster-container .portal .title .realm {
+.crossroadOfRealms-container .internship-container .skyscraper .sign .title .realm {
   position: absolute;
-  top: 19%;
-  left: -14%;
-  font-size: clamp(0.01vw, 0.3vw, 0.5rem);
+  top: 26%;
+  left: -13%;
+  font-size: clamp(0.01vw, 0.5vh, 0.5rem);
   transition: transform 0.2s ease;
   text-align: center;
 }
-.crossroad1-container .monster-container .portal .title .realm:hover {
+.crossroadOfRealms-container .internship-container .skyscraper .sign .title .realm:hover {
   transform: scale(1.1);
 }
-.crossroad1-container .monster-container .portal .title .of {
+.crossroadOfRealms-container .internship-container .skyscraper .sign .title .of {
   position: absolute;
-  top: 19%;
+  top: 26%;
   left: 40%;
-  font-size: clamp(0.1rem, 0.3vw, 0.5rem);
+  font-size: clamp(0.1rem, 0.5vh, 0.5rem);
   transition: transform 0.2s ease;
   text-align: center;
 }
-.crossroad1-container .monster-container .portal .title .of:hover {
+.crossroadOfRealms-container .internship-container .skyscraper .sign .title .of:hover {
   transform: scale(1.1);
 }
-.crossroad1-container .monster-container .portal .title .monsters {
+.crossroadOfRealms-container .internship-container .skyscraper .sign .title .monsters {
   position: absolute;
-  top: 30%;
+  top: 39%;
   left: 23%;
-  font-size: clamp(0.1rem, 0.3vw, 0.5rem);
+  font-size: clamp(0.1rem, 0.5vh, 0.5rem);
   transition: transform 0.2s ease;
   text-align: center;
 }
-.crossroad1-container .monster-container .portal .title .monsters:hover {
+.crossroadOfRealms-container .internship-container .skyscraper .sign .title .monsters:hover {
   transform: scale(1.1);
 }
-.crossroad1-container .monster-container .portal .title button {
+.crossroadOfRealms-container .internship-container .skyscraper .portal {
   position: absolute;
-  top: 100%;
-  left: 28%;
-  width: 15%;
-  height: 30%;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 3vw;
+  bottom: 24.5%;
+  left: 37.5%;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.2s ease;
 }
-.crossroad1-container .never-container {
+.crossroadOfRealms-container .internship-container .skyscraper .portal pre {
+  font-size: 1.05vh;
+  display: inline-block;
+  animation: portalSpin 90s infinite linear;
+  transform-origin: center;
+  transform-origin: 50% 50%;
+  line-height: 1;
+  cursor: pointer;
+}
+.crossroadOfRealms-container .internship-container .skyscraper .portal:hover {
+  transform: scale(1.03);
+}
+@keyframes portalSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.crossroadOfRealms-container .never-container {
   position: absolute;
   top: 10px;
-  left: 30vw;
-  width: 30vw;
+  right: 0;
+  width: 40vw;
   height: 100%;
 }
-.crossroad1-container .never-container .cliff {
+.crossroadOfRealms-container .never-container .cliff {
   position: absolute;
-  bottom: -21px;
-  left: 14vw;
+  bottom: -0.3%;
+  right: 0%;
+  transform: translate(75%);
   color: rgb(255, 255, 255);
-  font-size: clamp(0.1rem, 0.8vw, 1rem);
+  font-size: clamp(0.1rem, 1vh, 1rem);
 }
-.crossroad1-container .never-container .cliffy {
-  position: absolute;
-  bottom: -8px;
-  left: -8vw;
-  color: rgb(255, 255, 255);
-  font-size: clamp(0.1rem, 0.8vw, 1rem);
-}
-.crossroad1-container .never-container button {
-  background-color: transparent;
-  border: none;
-  width: 12vw;
-  height: 16vh;
-  position: absolute;
-  bottom: 10px;
-  left: 3.3vw;
-  cursor: pointer;
-}
-.crossroad1-container .never-container button pre {
-  color: white !important;
-  position: absolute;
-  bottom: 0px;
-  left: -1.45vw;
-  font-size: clamp(0.1rem, 0.25vw, 1rem);
-  transition: transform 0.2s ease;
-}
-.crossroad1-container .never-container button pre:hover {
-  transform: scale(1.05);
-}
-.crossroad1-container .before-container {
-  position: absolute;
-  width: 50%;
-  height: 100vh;
-  left: 50%;
-  top: 10px;
-}
-.crossroad1-container .before-container .skyscraper {
-  position: absolute;
-  bottom: -35px;
-  right: -80%;
-}
-.crossroad1-container .before-container .skyscraper .title {
-  position: absolute;
-  left: 23.7%;
-  top: -8%;
-}
-.crossroad1-container .before-container .skyscraper .title pre {
-  font-size: clamp(0.1rem, 0.5vw, 0.8rem);
-  transition: transform 0.2s ease;
-}
-.crossroad1-container .before-container .skyscraper .title pre:hover {
-  transform: scale(1.07);
-}
-.crossroad1-container .before-container .skyscraper pre {
-  color: rgb(255, 255, 255);
-  font-size: clamp(0.1rem, 0.78vw, 1rem);
-}
-.crossroad1-container .before-container .skyscraper .poster {
-  position: absolute;
-  left: 36.6%;
-  top: 11%;
-  background-color: rgb(255, 255, 255);
-}
-.crossroad1-container .before-container .skyscraper .poster pre {
-  color: rgb(0, 0, 0);
-  font-size: clamp(0.01rem, 0.11vw, 0.3rem);
-}
-.crossroad1-container .before-container .skyscraper button {
+.crossroadOfRealms-container .never-container button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-}
-.crossroad1-container .before-container .skyscraper .enter {
   position: absolute;
-  left: 36.6%;
-  top: 51%;
+  bottom: -1%;
+  right: -2%;
+  transform: translate(-50%, -50%);
 }
-.crossroad1-container .before-container .skyscraper .enter pre {
+.crossroadOfRealms-container .never-container button pre {
   color: rgb(255, 255, 255);
-  font-size: clamp(0.01rem, 0.3vw, 1rem);
+  font-size: 0.65vh;
   transition: transform 0.2s ease;
+  cursor: pointer;
 }
-.crossroad1-container .before-container .skyscraper .enter pre:hover {
-  transform: scale(1.09);
+.crossroadOfRealms-container .never-container button pre:hover {
+  transform: scale(1.04);
 }
 
 .realmOfMonster1-container {
@@ -770,24 +978,358 @@ body {
   color: white;
 }
 
-.beforeRealm1-container {
+.internshipBuilding-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: #707070;
+}
+
+.restart-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 0.6rem 1.2rem;
+  font-family: monospace;
+  border: 3px solid black;
+  background: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.restart-btn:hover {
+  background: black;
+  color: white;
+}
+
+.manga-wrapper {
+  width: 80%;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: white;
+}
+
+.side-content {
+  width: 20%;
+  height: 100vh;
+  background: #000000;
+  background: linear-gradient(180deg, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 100%);
+}
+
+.mangaPanels {
+  position: relative;
+  height: 100vh;
+  width: 190vh;
+  background: white;
+}
+
+.manga-panel {
   position: absolute;
-  top: -1.2%;
-  right: 11%;
-  background-color: rgb(255, 255, 255);
+  border: 3px dashed black;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: scale(0.95);
+  cursor: pointer;
 }
-.beforeRealm1-container pre {
-  color: rgb(0, 0, 0);
-  font-size: clamp(0.01rem, 1.2vw, 1rem);
+.manga-panel pre {
+  margin: 0;
+  white-space: pre;
+  line-height: 1;
 }
-.beforeRealm1-container .banner {
+.manga-panel .double-door {
+  position: relative;
+  font-size: 2.1vh;
+  top: 0;
+  left: 0;
+  margin: 0.25vh;
+}
+.manga-panel .door-open {
+  position: relative;
+  font-size: 1.25vh;
+  top: 0;
+  left: 0;
+  margin: 0.15vh;
+}
+.manga-panel .name-card {
+  position: relative;
+  font-size: 0.65vh;
+  top: 0;
+  left: 0;
+  margin: 0.52vh;
+}
+.manga-panel .elevator-panel {
+  position: relative;
+  font-size: 1vh;
+  top: 0;
+  left: 0;
+  margin: 0.52vh;
+}
+.manga-panel .elevator-panel .button2 {
   position: absolute;
-  top: 27%;
-  left: -60%;
-  background-color: rgb(255, 255, 255);
-  rotate: 90deg;
+  font-size: 0.6vh;
+  top: 3vh;
+  left: 5%;
+  width: 20%;
 }
-.beforeRealm1-container .banner pre {
-  color: rgb(0, 0, 0);
-  font-size: clamp(0.01rem, 0.83vw, 1rem);
+.manga-panel .elevator-panel .button2:hover {
+  transition: transform 0.2s ease-in-out !important;
+  transform: scale(1.06);
+}
+.manga-panel .elevator-panel .button2-text {
+  position: absolute;
+  font-size: 0.75vh;
+  top: 7vh;
+  left: 30%;
+}
+.manga-panel .elevator-panel .button1 {
+  position: absolute;
+  font-size: 0.6vh;
+  top: 17vh;
+  left: 5%;
+  width: 20%;
+}
+.manga-panel .elevator-panel .button1:hover {
+  transition: transform 0.2s ease-in-out !important;
+  transform: scale(1.06);
+}
+.manga-panel .elevator-panel .button0 {
+  position: absolute;
+  font-size: 0.6vh;
+  top: 33vh;
+  left: 5%;
+  width: 20%;
+}
+.manga-panel .elevator-panel .button0:hover {
+  transition: transform 0.2s ease-in-out !important;
+  transform: scale(1.06);
+}
+.manga-panel .elevator-panel .button0-text {
+  position: absolute;
+  font-size: 0.75vh;
+  top: 37vh;
+  left: 30%;
+}
+.manga-panel .elevator-panel .button-1 {
+  position: absolute;
+  font-size: 0.6vh;
+  top: 48vh;
+  left: 5%;
+  width: 20%;
+}
+.manga-panel .elevator-panel .button-1:hover {
+  transition: transform 0.2s ease-in-out !important;
+  transform: scale(1.06);
+}
+.manga-panel .elevator-panel .button-1-text {
+  position: absolute;
+  font-size: 0.75vh;
+  top: 53vh;
+  left: 30%;
+}
+
+.manga-panel.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.manga-panel.show:hover {
+  transition: transform 0.2s ease-in-out !important;
+  transform: scale(1.02);
+}
+
+.nothing-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: black;
+}
+
+.studyRoom-container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+.studyRoom-container .study-room-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 2vw;
+  margin-top: 2vw;
+}
+.studyRoom-container pre {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: min((100vh - 2vw - 2vw) / 65, 0.6578947368vw);
+  line-height: 1;
+  white-space: pre;
+}
+.studyRoom-container .door-button {
+  position: absolute;
+  top: 22.5%;
+  left: 7.2%;
+  width: 10%;
+  height: 55%;
+  cursor: pointer;
+}
+.studyRoom-container .project-title {
+  position: absolute;
+  top: -61.8%;
+  left: 69.3%;
+  width: 10%;
+  height: 50%;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  font-size: 2.3em;
+}
+.studyRoom-container .projects-container {
+  position: absolute;
+  inset: 0;
+}
+.studyRoom-container .projects-container .gachiakuta {
+  position: absolute;
+  top: 9.5%;
+  left: 76.7%;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border: 0.2vw solid white;
+}
+.studyRoom-container .projects-container .gachiakuta pre {
+  font-size: 25%;
+}
+.studyRoom-container .projects-container .project-popup {
+  position: absolute;
+  top: 50%;
+  left: 103%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  max-height: calc(100vh - 2vw - 2vw);
+  display: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: white;
+  color: black;
+  border: 0.4vw double black;
+  border-radius: 0.5em;
+  padding: 1em;
+  z-index: 9999;
+}
+.studyRoom-container .projects-container #gachiakuta-popup {
+  text-align: left;
+}
+.studyRoom-container .projects-container #gachiakuta-popup iframe {
+  width: 100%;
+  border: none;
+}
+
+.beforeRealm4-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.beforeRealm4-container .boss-container {
+  position: absolute;
+  top: 50%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+}
+.beforeRealm4-container .boss-container pre {
+  position: relative;
+  z-index: 8;
+  font-size: 0.6vw;
+}
+.beforeRealm4-container .choice-container {
+  position: absolute;
+  left: 100%;
+  bottom: 3.5%;
+  z-index: 999;
+  width: 20vw;
+  height: 70%;
+  padding: 2%;
+  color: white;
+  background: white;
+  border: 4px double #000000;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.beforeRealm4-container .choice-container .story {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: left;
+  width: 94%;
+  height: 60%;
+  padding: 3%;
+  border-bottom: 3px dashed rgb(0, 0, 0);
+  color: #000000;
+  font-size: clamp(0.6rem, 0.9vw, 1rem);
+}
+.beforeRealm4-container .choice-container #choices {
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+  height: 50%;
+}
+.beforeRealm4-container .choice-container .choice-btn {
+  width: 100%;
+  gap: 3%;
+  display: flex;
+  align-items: stretch;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.beforeRealm4-container .choice-container .choice-btn:hover {
+  transform: scale(1.02);
+}
+.beforeRealm4-container .choice-container .choice-key,
+.beforeRealm4-container .choice-container .choice-label {
+  border: 1px solid #000;
+  border-radius: 6px;
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.beforeRealm4-container .choice-container .choice-key {
+  width: 15%;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9vw;
+}
+.beforeRealm4-container .choice-container .choice-label {
+  flex: 1;
+  padding: 5%;
+  text-align: left;
+  font-size: 0.85vw;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.beforeRealm4-container .choice-container .restart-btn {
+  position: absolute;
+  top: 0;
+  left: 0%;
+  padding: 2%;
+  font-size: 0.7vw;
+  background: transparent;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.beforeRealm4-container .choice-container .restart-btn:hover {
+  transform: scale(1.15);
 }/*# sourceMappingURL=index.css.map */

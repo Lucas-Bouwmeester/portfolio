@@ -105,10 +105,33 @@ function animateTransition(from, to, direction) {
   }, animationDuration);
 }
 
-// Scrolling
+// Scrolling in other contents is made possible
+
+function isScrollable(element, deltaY) {
+  const style = window.getComputedStyle(element);
+  const overflowY = style.overflowY;
+  const canScroll = overflowY === "auto" || overflowY === "scroll";
+
+  if (!canScroll) return false;
+
+  const scrollTop = element.scrollTop;
+  const scrollHeight = element.scrollHeight;
+  const clientHeight = element.clientHeight;
+
+  if (deltaY > 0) return scrollTop + clientHeight < scrollHeight; 
+  else return scrollTop > 0; 
+}
+
+//scrolling itself
 
 window.addEventListener("wheel", (e) => {
   if (isAnimating) return;
+
+  let el = e.target;
+  while (el && el !== document.body) {
+    if (isScrollable(el, e.deltaY)) return; 
+    el = el.parentElement;
+  }
 
   scrollAccumulator += e.deltaY;
 
@@ -123,5 +146,42 @@ window.addEventListener("wheel", (e) => {
   }
 });
 
-// to Action
 setDirection(currentDirection);
+
+
+
+//phone scrolling (in testing)
+
+let touchStartY = 0;
+let touchEndY = 0;
+
+window.addEventListener("touchstart", (e) => {
+  if (isAnimating) return;
+  touchStartY = e.touches[0].clientY;
+});
+
+window.addEventListener("touchmove", (e) => {
+  if (isAnimating) return;
+  touchEndY = e.touches[0].clientY;
+});
+
+const swipeThreshold = 50; 
+
+window.addEventListener("touchend", (e) => {
+  if (isAnimating) return;
+
+  const deltaY = touchStartY - touchEndY;
+
+  if (Math.abs(deltaY) > swipeThreshold) {
+    if (deltaY > 0) {
+
+      navigate(currentDirection);
+    } else {
+
+      navigate(getOpposite(currentDirection));
+    }
+  }
+
+  touchStartY = 0;
+  touchEndY = 0;
+});

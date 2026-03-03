@@ -1,3 +1,17 @@
+//later 
+
+  // let i = 0;
+  // const speedTxt = 50;
+
+  // function typeText() {
+  //   if (i < txt.length) {
+  //     document.getElementById("t").innerHTML += txt.charAt(i);
+  //     i++;
+  //     setTimeout(typeText, speedTxt);
+  //   }
+  // }
+
+
 // Homepage: Context
 
 //texts inout
@@ -47,51 +61,51 @@ const steps = [
   {
     element: "#context",
     text: "Travelling through realms is indicated here.",
-    top: "20px",
-    right: "140px"
+    top: "3.5vw",
+    right: "17vw"
   },
   {
     element: "#context",
     text: "The arrow points to whichever direction you're about to go.",
-    top: "20px",
-    right: "140px"
+    top: "3.5vw",
+    right: "17vw"
   },
   {
     element: "#context",
     text: "There are 4 directions on each page: East, West, North and South.",
-    top: "20px",
-    right: "140px"
+    top: "3.5vw",
+    right: "17vw"
   },
   {
     element: "#context",
     text: "Left-clicking an object changes the direction you're going. When doing so, the arrow points to that direction.",
-    top: "20px",
-    right: "140px"
+    top: "3.5vw",
+    right: "17vw"
   },
   {
     element: "#context",
     text: "Finally, to move in the desired direction, use your mouse wheel as you usually would.",
-    top: "20px",
-    right: "140px"
+    top: "3.5vw",
+    right: "17vw"
   },
   {
     element: "#context",
     text: "If you wish to return to the previous page you were on, you can do so by simply scrolling back.",
-    top: "20px",
-    right: "140px"
+    top: "3.5vw",
+    right: "17vw"
   },
   {
     element: "#context",
     text: "Keep in mind, scrolling back to the previous page only works if you didn't change the direction youre going.",
-    top: "20px",
-    right: "140px"
+    top: "3.5vw",
+    right: "17vw"
   },
   // -------
   {
     element: "#context",
     text: "If you can't find a path, you can search for them through the patchnotes.",
-    bottom: "200px",
-    right: "60px"
+    bottom: "30%",
+    right: "5vw"
   },
   {
     element: "#context",
@@ -169,7 +183,6 @@ function endContext() {
 }
 
 
-
 // Homepage: patchnotes
   function openPopup() {
     document.getElementById('popup').style.display = 'block';
@@ -190,6 +203,17 @@ function endContext() {
   function closeCredit() {
     document.getElementById('credit-popup').style.display = 'none';
     document.getElementById('credit').style.display = 'block';
+  }
+
+  // Homepage: insights
+  function openInsights() {
+    document.getElementById('insights-popup').style.display = 'block';
+    document.getElementById('insights').style.display = 'none';
+  }
+
+  function closeInsights() {
+    document.getElementById('insights-popup').style.display = 'none';
+    document.getElementById('insights').style.display = 'block';
   }
 
   //Homepage: falling snow
@@ -227,15 +251,18 @@ function endContext() {
 
 setInterval(createFlake, 200);
 
-  // Situation page: Monologue
+  // Information page: Monologue
   let index = 0;
+  let charIndex = 0;
+  let isTyping = false;
+  const speedTxt = 40;
 
   const texts = [
     "Well honestly said, I am not sure.",
     "I just woke up, and boom, I suddenly ended up here.",
     "I am wearing a completely different attire than I normally do.",
     "Who am I you ask?. To be honest, I am way too tired to explain. I just woke up, as I already said.",
-    "Just open my personal file, it is really hard to miss. Yes, that giant  button to your right. Don't be shy.",
+    "Just open my personal file, it is really hard to miss. Yes, that giant button to your right. Don't be shy.",
     "Take your time reading it through. It's not like I am hanging above a cliff or something....",
     "Read it yet? Good. In the meantime, I've been planning a way out.",
     "My plan you ask? Well, I was going through my new attire you see, and I found this blade in my left pocket -|////////>",
@@ -244,16 +271,35 @@ setInterval(createFlake, 200);
     "I'm just going to cut the rope and pray for the best. Please, please, no need to clap."
   ];
 
-  function nextText() {
-    index++;
-    if (index < texts.length) {
-      document.getElementById("textBox").textContent = texts[index];
+  const textBox = document.getElementById("textBox");
+
+  function typeWriter(text) {
+    if (charIndex < text.length) {
+      textBox.textContent += text.charAt(charIndex);
+      charIndex++;
+      setTimeout(() => typeWriter(text), speedTxt);
     } else {
-      document.getElementById("textBox").textContent = "I'll cut the rope when you scroll down. I'm ready for it, your call.";
+      isTyping = false;
     }
   }
 
-// Situation page: buttons switching
+  function nextText() {
+    if (isTyping) return; // prevent skipping mid-typing
+
+    index++;
+
+    if (index < texts.length) {
+      textBox.textContent = "";
+      charIndex = 0;
+      isTyping = true;
+      typeWriter(texts[index]);
+    } else {
+      textBox.textContent =
+        "I'll cut the rope when you scroll down. I'm ready for it, your call.";
+    }
+  }
+
+// Information page: buttons switching
 const panel = document.getElementById('aboutPanel');
 const toggleButton = document.getElementById('toggleButton');
 
@@ -269,3 +315,206 @@ function showInfo(id) {
 
     document.getElementById(id).style.display = 'block';
   }
+
+//Information page: Wind/gust
+const gustContainer = document.getElementById('gust-container');
+
+// Generate the wind
+function generateCurve(size) {
+  const pattern = [];
+  for (let i = 0; i < size; i++) {
+    const spaces = i < size / 2 ? size / 2 - i : i - size / 2;
+    pattern.push(' '.repeat(spaces) + '(');
+  }
+  return pattern.join('\n');
+}
+
+function createGust() {
+  const gust = document.createElement('div');
+  gust.className = 'gust';
+
+  // Random curve size
+  const size = 10 + Math.floor(Math.random() * 15); 
+
+  // Random font size
+  const fontSize = 10 + Math.random() * 25;
+  gust.style.fontSize = `${fontSize}px`;
+
+  const actualHeight = fontSize * size * 0.7;
+
+  // Random position
+  const startY = Math.random() * (gustContainer.clientHeight - actualHeight);
+  gust.style.top = `${startY}px`;
+
+  // Right
+  gust.style.left = `${gustContainer.clientWidth + 50}px`;
+
+  gust.textContent = generateCurve(size);
+  gustContainer.appendChild(gust);
+
+  // Random speed
+  const speed = 0.4 + Math.random() * 1;
+
+  function animate() {
+    const currentX = parseFloat(gust.style.left);
+    if (currentX < -300) {
+      gust.remove();
+      return;
+    }
+    gust.style.left = `${currentX - speed}px`;
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+// The amount
+setInterval(createGust, 9000); 
+
+
+//internship Building
+const mangaPanels = document.querySelectorAll(".manga-panel");
+const mangarestartBtn = document.getElementById("mangarestartBtn");
+
+let mangaIndex = 0;
+let mangaTimeoutId = null;
+let mangaRunning = false;
+
+function showNextPanel() {
+  if (mangaIndex >= mangaPanels.length) {
+    mangaRunning = false;
+    return;
+  }
+
+  mangaRunning = true;
+
+  const mangaPanel = mangaPanels[mangaIndex];
+
+  const mangaDuration = mangaPanel.dataset.duration || 800;
+  const mangaDelay = mangaPanel.dataset.delay || 1000;
+
+  mangaPanel.style.transition =
+    `opacity ${mangaDuration}ms ease, transform ${mangaDuration}ms ease`;
+
+  mangaPanel.classList.add("show");
+
+  mangaIndex++;
+
+  mangaTimeoutId = setTimeout(showNextPanel, parseInt(mangaDelay));
+}
+
+function restartManga() {
+  clearTimeout(mangaTimeoutId);
+
+  mangaPanels.forEach(panel => {
+    panel.classList.remove("show");
+  });
+
+  mangaIndex = 0;
+  mangaRunning = false;
+
+  void document.body.offsetHeight;
+
+  mangaTimeoutId = setTimeout(showNextPanel, 9000);
+}
+
+window.addEventListener("load", showNextPanel);
+
+if (mangarestartBtn) {
+  mangarestartBtn.addEventListener("click", restartManga);
+}
+
+
+
+
+
+
+
+  // beforeRealm 4: choice shown
+const nodes = {
+    start: {
+        text: "Boss: Welcome and come in, Lucas<br>Bouwmeester.<br><br> 'One firm handshake later..' <br><br>Boss: Thank you for attending this<br>interview.<br><br>Boss: Could you....",
+        choices: [
+            { key: "1", label: "tell me more about yourself?", next: "introduce" },
+            { key: "2", label: "tell me what you want to learn from the internship", next: "internship" },
+        ]
+    },
+    
+    introduce: {
+      text: "Boss: Could you tell me more about<br>yourself?<br><br>Me: Yes ofcourse. I studied coding<br>for the past 2.5 years and have<br>developed multiple skills in<br>programming and processing.<br><br>I have specialized myself in<br>frontend development, and that is<br>why I think I would be a great fit<br>for your company.",
+      choices: [
+            { key: "1", label: "What languages do you know?", next: "codingLanguages" },
+            { key: "2", label: "What do you mean with processing?", next: "processing" },
+            { key: "3", label: "How are you planning to add value?", next: "value" },
+      ]
+    },
+
+    codingLanguages: {
+      text: "Boss: What coding languages do you<br>know?<br><br>Me: I have a good amount of experienc<br>with HTML, CSS, SCSS (SASS). I use<br>JavaScript often, but I'm low skilled<br>at it.<br><br>Me: I also know the basics of PHP and<br>MySQL. Right now I am learning React.",
+      choices: [
+        { key: "1", label: "How do you ensure responsiveness?", next: "responsiveness" },
+        { key: "2", label: "Return to last page", next: "introduce" },
+        
+      ]
+    },
+
+    processing: {
+      text: "Boss: What do you mean with processing?<br><br>Me: With processing I mean that outside<br>of coding I know multiple other skills<br>that are relevant for projects too.<br><br>For example, I can design wireframes,<br>work with Trello and I know how<br>scrumming works.",
+      choices: [ 
+          { key: "1", label: "Return to last page", next: "introduce" },
+      ]
+    },
+    
+
+};
+
+// Function render node
+function renderNode(nodeKey) {
+    const node = nodes[nodeKey];
+    const storyDiv = document.getElementById("story");
+    const choicesDiv = document.getElementById("choices");
+
+    storyDiv.innerHTML = node.text;
+
+    choicesDiv.innerHTML = "";
+
+    node.choices.forEach(choice => {
+    const btn = document.createElement("button");
+    btn.className = "choice-btn";
+
+    const keyBox = document.createElement("span");
+    keyBox.className = "choice-key";
+    keyBox.textContent = choice.key;
+
+    const label = document.createElement("span");
+    label.className = "choice-label";
+    label.textContent = choice.label;
+
+    btn.appendChild(keyBox);
+    btn.appendChild(label);
+
+    btn.onclick = () => renderNode(choice.next);
+
+    choicesDiv.appendChild(btn);
+});
+}
+
+// Restart story function
+function restartStory() {
+    renderNode("start");
+}
+
+// Start story 
+renderNode("start");
+
+document.querySelectorAll('.project-trigger').forEach(trigger => {
+  trigger.addEventListener('click', function () {
+
+    document.querySelectorAll('.project-popup').forEach(popup => {
+      popup.style.display = 'none';
+    });
+
+    const popupId = this.getAttribute('data-popup');
+    document.getElementById(popupId).style.display = 'block';
+  });
+});
