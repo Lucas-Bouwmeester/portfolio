@@ -1,0 +1,298 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url('font/BADABB__.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+/* index_view.php */
+
+body {
+    overflow: hidden;
+    background-image: url(../images/background-color.png);
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}
+
+.bg-container {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        z-index: 1;
+        width: 100vw;
+        /* flex-wrap: wrap; */
+    }
+
+    /* Each rows= */
+    .col {
+        flex: 0 0 150px;
+        height: 120%;
+        overflow: hidden;
+        position: relative;
+        rotate: 12deg;
+        left: -150px;
+        top: -10%;
+        
+    }
+
+    .scroll {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* tile for each image */
+    .tile {
+        width: 150px;
+        height: 150px;
+        background-image: url("../images/background-index2.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        /* border: 0.1px solid white; */
+    }
+
+    /* work in progress to fixing the infite loop issue */
+    .up {
+        /* transform: translateY(-550px); */
+        animation: scroll-up 8s linear infinite;
+    }
+
+    .down {
+        /* transform: translateY(-200px); */
+        animation: scroll-down 4s linear infinite;
+    }
+
+    @keyframes scroll-up {
+        from { transform: translateY(0); }
+        to   { transform: translateY(-1200px); } 
+    }
+
+    @keyframes scroll-down {
+        from { transform: translateY(-600px); }
+        to   { transform: translateY(0); }
+    }
+
+
+.z-index {
+    z-index: 2;
+}
+
+.GACHIAKUTA-title-container {
+    position: absolute;
+    width: 70%;
+    background-color: transparent;
+    margin: 2% 0 0 2%;
+
+    display: flex;
+    gap: 1px;
+}
+
+.GACHIAKUTA-title {
+    background-image: url(../images/index/GACHIAKUTA-title-combined.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    height: 33vh;
+    width: 100%;
+    animation: title-pop 800ms infinite linear;
+}
+
+@keyframes title-pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    60% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+/* .GACHIAKUTA-subtitle {
+    background-image: url(../images/index/GACHIAKUTA-subtitle.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    height: 8.5vh;
+    width: 75%;
+} */
+
+
+.rudo-index-container {
+    position: absolute;
+    top: -100px;
+    right: -10px;
+    width: 70vw;   
+    height: 100vh; 
+}
+
+.rudo-index {
+    background-image: url(../images/index/rudo-index.png);
+    background-repeat: no-repeat;
+    background-size: cover;     
+    background-position: center; 
+    
+    width: 100%;
+    height: 120%;
+    animation: rudo-animation 3s infinite ease-in-out;
+}
+
+@keyframes rudo-animation {
+    0% { transform: translateY(0); transform: translateX(0); rotate: 0;}
+    50%   { transform: translateY(-35px); transform: translateX(35px); rotate: 4deg;}
+    100% { transform: translateY(0); transform: translateX(0); rotate: -1;}
+}
+
+
+.index-menu-container {
+    width: 30vw;
+    height: 80vh;
+    position: absolute;
+    top: 30%;
+}
+
+.index-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    height: 80vh;
+    margin: 0 0 0 7%;
+}
+
+.start-index {
+    background-image: url(../images/index/start-index.png);
+    background-repeat: no-repeat;
+    background-size: contain;     
+    background-position: center; 
+    
+    width: 100%;
+    height: 20vh; 
+    transition: ease-in-out;
+    cursor: pointer;
+}
+
+.options-index {
+    background-image: url(../images/index/options-index.png);
+    background-repeat: no-repeat;
+    background-size: contain;     
+    background-position: center; 
+    
+    width: 100%;
+    height: 20vh; 
+    transition: ease-in-out;
+    cursor: pointer;
+}
+
+.quit-index {
+    background-image: url(../images/index/quit-index.png);
+    background-repeat: no-repeat;
+    background-size: contain;     
+    background-position: center; 
+    
+     width: 100%;
+    height: 20vh; 
+    transition: ease-in-out;
+    cursor: pointer;
+}
+
+.start-index:hover,
+.options-index:hover,
+.quit-index:hover {
+    transform: scale(1.45);
+    transform-origin: left center;
+    transition: transform 0.2s ease-in-out;
+    filter: brightness(1.2); 
+}
+
+
+
+/* list_view.php */
+.characters-list-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height:72%;
+    /*bottom: top;*/
+    background-color: transparent;
+}
+
+.name-list-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 25px);
+    height: 28%;
+    bottom: 0;
+    background-color: aliceblue;
+    border-left: 12px solid white;
+    border-right: 15px solid white;
+    z-index: 8;
+}
+
+
+.stripes-top-container {
+    width: 100%;
+    height: 50%;
+    /*background-image: url("../images/list/top-line.png");*/
+    background-image: url("../images/list/top-line.png");
+    background-repeat: repeat-x;
+    background-size: contain;
+    z-index: 5;
+    display: flex;
+    animation: stripes-top 800ms infinite linear;
+}
+
+@keyframes stripes-top {
+    from { transform: translateZ(0); }
+    to   { transform: translateZ(-1200px); }
+}
+
+.stripes-bottom-container {
+    width: 100%;
+    height: 50%;
+    background-image: url("../images/list/bottom-line.png");
+    background-repeat: repeat-x;
+    background-size: contain;
+    z-index: 5;
+    display: flex;
+}
+
+.red-name-container {
+    position: absolute;
+    width: 100%;
+    height: 60%;
+    z-index: 7;
+    background-color: rgb(237, 71, 53);
+    transform: translate(0%, 40%);
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.red-name-container h1 {
+    color: white;
+}
+
+/* I need 2 white divs at both ends of the container to make the final border effect */
+.black-div {
+    position: absolute;
+    width: 0.5%;
+    height: 40%;
+    z-index: 7;
+    background-color: black;
+    right: 0;
+    top: 30%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}

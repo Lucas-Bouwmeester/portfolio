@@ -30,13 +30,11 @@ body {
 
 .compass {
   position: fixed;
-  z-index: 9000;
+  z-index: 10;
   top: 1.5vw;
-  right: 1.5vw;
+  right: 3vw;
   width: 15%;
   aspect-ratio: 1/1;
-  background: radial-gradient(circle at center, rgb(240, 240, 240) 0%, rgba(250, 250, 250, 0.85) 40%, rgba(255, 255, 255, 0.5) 100%, transparent 100%);
-  border-radius: 50%;
   color: black;
   z-index: 1000;
   display: flex;
@@ -56,22 +54,208 @@ body {
   padding: 0;
   font-family: monospace;
   font-size: clamp(0.01px, 0.12vw, 1000px);
+  transform: translate(-50%, 50%);
+  line-height: 1;
   transform: rotate(-135deg);
   z-index: 9000;
+  background: radial-gradient(circle at center, rgb(240, 240, 240) 0%, rgba(250, 250, 250, 0.85) 40%, rgba(255, 255, 255, 0.5) 100%, transparent 100%);
+  border-radius: 50%;
 }
-
-.needle {
+.compass-ring .needle {
   position: absolute;
   transform-origin: 50% 100%;
-  transform: translate(-50%, -100%) rotate(145deg);
-  left: 50%;
-  top: 50%;
+  rotate: 135deg;
+  left: -29%;
+  top: 12%;
   margin: 0;
   padding: 0;
   font-family: monospace;
   font-size: clamp(0.01px, 0.2vw, 1000px);
   transition: transform 0.4s ease;
   pointer-events: none;
+  color: black !important;
+}
+
+.compass-container {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100vw;
+  height: 100vh;
+}
+.compass-container #compass {
+  z-index: 9;
+  transition: transform 0.2s ease;
+}
+.compass-container #compass:hover {
+  transform: scale(1.14);
+}
+.compass-container #compass-popup {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(0, 0, 0);
+  width: 90%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  height: 90%;
+  border-radius: 16px;
+  padding: 0 25px 30px 25px;
+  border: 2px solid white;
+  box-shadow: -1px 10px 30px 18px rgba(255, 255, 255, 0.37);
+  -webkit-box-shadow: -1px 10px 30px 18px rgba(255, 255, 255, 0.37);
+  -moz-box-shadow: -1px 10px 30px 18px rgba(255, 255, 255, 0.37);
+  position: absolute;
+  z-index: 9999;
+  display: none;
+  margin: 0 !important;
+}
+.compass-container #compass-popup .cross {
+  right: 10px;
+  top: -10px;
+  position: absolute;
+  cursor: pointer;
+  rotate: 45deg;
+  font-size: 82px;
+  color: white;
+  z-index: 9999;
+}
+.compass-container #compass-popup .title {
+  position: absolute;
+  left: 32%;
+  top: 2%;
+  color: white;
+  text-shadow: 2px 3px 13px #000000;
+  font-size: 2.5rem;
+  z-index: 888;
+}
+.compass-container #compass-popup .info-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 30%;
+  border-right: 1.5px solid white;
+}
+.compass-container #compass-popup .info-container .buttons {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.compass-container #compass-popup .info-container .buttons button {
+  width: 100%;
+  padding: 8%;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: black;
+  color: white;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  font-size: clamp(10px, 2vw, 18px);
+}
+.compass-container #compass-popup .info-container .buttons button:hover {
+  background: white;
+  color: black;
+}
+.compass-container #compass-popup .info-container .content {
+  width: 70%;
+  height: 100%;
+  padding-left: 5%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: white;
+  border-left: 1.5px solid white;
+}
+.compass-container #compass-popup .info-container .info {
+  display: none;
+}
+.compass-container #compass-popup .map-container {
+  position: absolute;
+  top: 0;
+  left: 30%;
+  width: 70%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+  border-radius: 0 16px 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.compass-container #compass-popup #map {
+  position: absolute;
+  width: 10000px;
+  height: 10000px;
+  transform-origin: center center;
+  transform: scale(0);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.5) 5px, transparent 5px), linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 5px, transparent 5px);
+  background-size: 300px 300px;
+}
+.compass-container #compass-popup #map .arrow {
+  position: absolute;
+  color: white;
+  font-size: 23rem;
+}
+.compass-container #compass-popup .map-item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 12px 16px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.2s ease;
+  text-align: center;
+  min-width: 1020px;
+  min-height: 600px;
+}
+.compass-container #compass-popup .map-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px 6px rgba(255, 255, 255, 0.25);
+}
+.compass-container #compass-popup .map-item.active {
+  box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.85);
+}
+.compass-container #compass-popup .map-title {
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 0px;
+  font-size: 6.5rem;
+}
+.compass-container #compass-popup .map-description {
+  font-size: 1.85rem;
+  color: #ccc;
+  text-align: center;
+  position: relative;
+  top: 40px;
+  line-height: 5.2rem;
+}
+.compass-container #compass-popup .map-item.active,
+.compass-container #compass-popup .map-item:hover {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.7);
+  }
+}
+.compass-container #compass-popup .map-item.current {
+  animation: pulseGlow 1.5s infinite ease-in-out;
 }
 
 .panel {
@@ -138,7 +322,7 @@ body {
 }
 .homepage-container .title {
   /* clamp(MIN, PREFERRED, MAX) */
-  font-size: clamp(0.4rem, 1vw, 2vw);
+  font-size: clamp(0.4rem, 0.8vw, 2vw);
   transition: transform 0.2s ease;
 }
 .homepage-container .title:hover {
@@ -146,7 +330,7 @@ body {
 }
 .homepage-container .container {
   position: relative;
-  top: -28px;
+  top: -10px;
 }
 .homepage-container .container .undertitle {
   font-size: clamp(0.2rem, 0.4vw, 1vw);
@@ -168,13 +352,13 @@ body {
 .homepage-container .context-container {
   position: absolute;
   bottom: 45px;
-  left: 39vw;
+  left: 34vw;
 }
 .homepage-container .context-container #context {
   cursor: pointer;
 }
 .homepage-container .context-container #context pre {
-  font-size: clamp(0.01px, 0.33vw, 18px);
+  font-size: clamp(0.01px, 0.46vw, 18px);
   transition: transform 0.2s ease;
 }
 .homepage-container .context-container #context pre:hover {
@@ -635,7 +819,7 @@ body {
 .about-me {
   position: fixed;
   top: 0;
-  left: -54%;
+  left: -50%;
   width: 50%;
   height: calc(100vh - 40px);
   background-color: rgb(255, 255, 255);
@@ -934,6 +1118,18 @@ body {
   width: 40vw;
   height: 100%;
 }
+.crossroadOfRealms-container .never-container .up {
+  position: absolute;
+  right: 32.8%;
+  top: 2%;
+}
+.crossroadOfRealms-container .never-container .up pre {
+  font-size: clamp(0.1rem, 0.5vh, 0.8rem);
+  transition: transform 0.2s ease;
+}
+.crossroadOfRealms-container .never-container .up pre:hover {
+  transform: scale(1.07);
+}
 .crossroadOfRealms-container .never-container .cliff {
   position: absolute;
   bottom: -0.3%;
@@ -988,9 +1184,10 @@ body {
 
 .restart-btn {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 0.6rem 1.2rem;
+  bottom: 2%;
+  right: 2%;
+  padding: 0.6%;
+  font-size: 1.2vw;
   font-family: monospace;
   border: 3px solid black;
   background: white;
@@ -1009,6 +1206,7 @@ body {
   overflow-x: auto;
   overflow-y: hidden;
   background: white;
+  direction: rtl;
 }
 
 .side-content {
@@ -1016,6 +1214,17 @@ body {
   height: 100vh;
   background: #000000;
   background: linear-gradient(180deg, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 100%);
+}
+.side-content .text {
+  position: absolute;
+  top: 25%;
+  font-size: 15%;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  color: white;
+  text-align: center;
+  margin: 9.2%;
+  height: 30%;
 }
 
 .mangaPanels {
@@ -1032,6 +1241,7 @@ body {
   opacity: 0;
   transform: scale(0.95);
   cursor: pointer;
+  direction: ltr;
 }
 .manga-panel pre {
   margin: 0;
@@ -1040,14 +1250,14 @@ body {
 }
 .manga-panel .double-door {
   position: relative;
-  font-size: 2.1vh;
+  font-size: 2.25vh;
   top: 0;
-  left: 0;
+  right: 0;
   margin: 0.25vh;
 }
 .manga-panel .door-open {
   position: relative;
-  font-size: 1.25vh;
+  font-size: 2.25vh;
   top: 0;
   left: 0;
   margin: 0.15vh;
@@ -1055,6 +1265,13 @@ body {
 .manga-panel .name-card {
   position: relative;
   font-size: 0.65vh;
+  top: 0;
+  left: 0;
+  margin: 0.52vh;
+}
+.manga-panel .room {
+  position: relative;
+  font-size: 0.565vh;
   top: 0;
   left: 0;
   margin: 0.52vh;
@@ -1146,6 +1363,11 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
   color: black;
+  cursor: pointer;
+}
+.nothing-container:hover {
+  transition: transform 0.2s ease-in-out !important;
+  transform: translate(-50%, -50%) scale(1.06);
 }
 
 .studyRoom-container {
@@ -1204,13 +1426,25 @@ body {
 .studyRoom-container .projects-container .gachiakuta pre {
   font-size: 25%;
 }
+.studyRoom-container .projects-container .MP {
+  position: absolute;
+  top: 22%;
+  left: 76.7%;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border: 0.2vw solid white;
+}
+.studyRoom-container .projects-container .MP pre {
+  font-size: 25%;
+}
 .studyRoom-container .projects-container .project-popup {
   position: absolute;
   top: 50%;
   left: 103%;
   transform: translate(-50%, -50%);
   width: 25%;
-  max-height: calc(100vh - 2vw - 2vw);
+  max-height: calc(100vh - 2vw - 2vw - 20vw);
   display: none;
   overflow-y: auto;
   overflow-x: hidden;
@@ -1221,39 +1455,73 @@ body {
   padding: 1em;
   z-index: 9999;
 }
+.studyRoom-container .projects-container .project-popup h1 {
+  position: relative;
+  top: -1.5vw;
+}
 .studyRoom-container .projects-container #gachiakuta-popup {
   text-align: left;
 }
 .studyRoom-container .projects-container #gachiakuta-popup iframe {
   width: 100%;
+  position: relative;
+  left: -11vw;
+  border: none;
+}
+.studyRoom-container .projects-container #MP-popup {
+  text-align: left;
+}
+.studyRoom-container .projects-container #MP-popup iframe {
+  width: 100%;
+  position: relative;
+  left: -11vw;
   border: none;
 }
 
-.beforeRealm4-container {
+.interview-container {
   width: 100vw;
   height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
+  display: grid;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
 }
-.beforeRealm4-container .boss-container {
-  position: absolute;
-  top: 50%;
-  left: 38%;
-  transform: translate(-50%, -50%);
+.interview-container .boss-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 2vw;
+  margin-top: 2vw;
+  line-height: 1;
+  white-space: pre;
 }
-.beforeRealm4-container .boss-container pre {
+.interview-container .boss-container pre {
   position: relative;
   z-index: 8;
-  font-size: 0.6vw;
+  font-size: min((100vh - 2vw - 2vw) / 65, 0.5789473684vw);
 }
-.beforeRealm4-container .choice-container {
+.interview-container .boss-container pre .leave {
+  position: absolute;
+  top: -3%;
+  left: 98%;
+  cursor: pointer;
+}
+.interview-container .boss-container pre .leave pre {
+  font-size: 20%;
+}
+.interview-container .boss-container pre .leave pre:hover {
+  transition: transform 0.2s ease-in-out !important;
+  transform: scale(1.06);
+}
+.interview-container .choice-container {
   position: absolute;
   left: 100%;
   bottom: 3.5%;
   z-index: 999;
-  width: 20vw;
-  height: 70%;
+  width: 30%;
+  height: 80%;
   padding: 2%;
   color: white;
   background: white;
@@ -1263,25 +1531,25 @@ body {
   flex-direction: column;
   gap: 14px;
 }
-.beforeRealm4-container .choice-container .story {
+.interview-container .choice-container .story {
   flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: left;
-  width: 94%;
+  width: 97%;
   height: 60%;
   padding: 3%;
   border-bottom: 3px dashed rgb(0, 0, 0);
   color: #000000;
-  font-size: clamp(0.6rem, 0.9vw, 1rem);
+  font-size: 175%;
 }
-.beforeRealm4-container .choice-container #choices {
+.interview-container .choice-container #choices {
   display: flex;
   flex-direction: column;
   gap: 5%;
   height: 50%;
 }
-.beforeRealm4-container .choice-container .choice-btn {
+.interview-container .choice-container .choice-btn {
   width: 100%;
   gap: 3%;
   display: flex;
@@ -1292,11 +1560,11 @@ body {
   cursor: pointer;
   transition: transform 0.2s ease;
 }
-.beforeRealm4-container .choice-container .choice-btn:hover {
+.interview-container .choice-container .choice-btn:hover {
   transform: scale(1.02);
 }
-.beforeRealm4-container .choice-container .choice-key,
-.beforeRealm4-container .choice-container .choice-label {
+.interview-container .choice-container .choice-key,
+.interview-container .choice-container .choice-label {
   border: 1px solid #000;
   border-radius: 6px;
   background-color: white;
@@ -1304,32 +1572,17 @@ body {
   display: flex;
   align-items: center;
 }
-.beforeRealm4-container .choice-container .choice-key {
+.interview-container .choice-container .choice-key {
   width: 15%;
   justify-content: center;
   font-weight: bold;
-  font-size: 0.9vw;
+  font-size: min(1.4545454545vh, 0.6578947368vw);
 }
-.beforeRealm4-container .choice-container .choice-label {
+.interview-container .choice-container .choice-label {
   flex: 1;
   padding: 5%;
   text-align: left;
-  font-size: 0.85vw;
+  font-size: min(1.4545454545vh, 0.6578947368vw);
   white-space: normal;
   overflow-wrap: anywhere;
-}
-.beforeRealm4-container .choice-container .restart-btn {
-  position: absolute;
-  top: 0;
-  left: 0%;
-  padding: 2%;
-  font-size: 0.7vw;
-  background: transparent;
-  border: none;
-  color: #000000;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.beforeRealm4-container .choice-container .restart-btn:hover {
-  transform: scale(1.15);
 }/*# sourceMappingURL=index.css.map */

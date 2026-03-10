@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"> 
+    <script src="javascript/caracter.js" defer></script>
+    <script src="javascript/controls.js" defer></script>
+</head>
+<body>
+        <div class="container">
+          <div class="banner">Choose your character</div>
+          
+          <div class="grid-area">
+            <div class="charbox-player" id="player1" style="grid-column: 1; grid-row: 1 / span 2;">
+              <h2 class="char-img">Player 1</h2>
+            </div>
+            
+            <div class="charbox-player" id="player2" style="grid-column: 2; grid-row: 1 / span 2;">
+              <h2 class="char-img">Player 2</h2>
+            </div>
+            
+            <div class="charbox-player" id="player3" style="grid-column: 1; grid-row: 3 / span 2;">
+              <h2 class="char-img">Player 3</h2>
+            </div>
+            
+
+    
+            <div class="charboxQ" onclick="window.location = '3player/3player.html'" style="grid-column: 2; grid-row: 3;">Start</div>
+            <div class="charboxQ" onclick="window.location = 'index.html'" style="grid-column: 2; grid-row: 4;">Back</div>
+          
+            
+            <div class="charbox" data-character="Character1" data-img="images/char1.jpg" style="grid-column: 3; grid-row: 1;">
+              <img src="images/char1.jpg" alt="Character 1" class="char-img">
+            </div>
+            <div class="charbox" data-character="Character2" data-img="images/char2.jpg" style="grid-column: 4; grid-row: 1;">
+              <img src="images/char2.jpg" alt="Character 2" class="char-img">
+            </div>
+            <div class="charbox" data-character="Character3" data-img="images/char3.png" style="grid-column: 5; grid-row: 1;">
+              <img src="images/char3.png" alt="Character 3" class="char-img">
+            </div>
+            
+            <div class="charbox" style="grid-column: 6; grid-row: 1;">Character C</div>
+            <div class="charbox" style="grid-column: 3; grid-row: 2;">Character D</div>
+            <div class="charbox" style="grid-column: 4; grid-row: 2;">Character E</div>
+            <div class="charbox" style="grid-column: 5; grid-row: 2;">Character F</div>
+            <div class="charbox" style="grid-column: 6; grid-row: 2;">Character C</div>
+
+            <div class="charbox" style="grid-column: 3; grid-row: 3;">Character A</div>
+            <div class="charbox" style="grid-column: 4; grid-row: 3;">Character B</div>
+            <div class="charbox" style="grid-column: 5; grid-row: 3;">Character C</div>
+            <div class="charbox" style="grid-column: 6; grid-row: 3;">Character C</div>
+            <div class="charbox" style="grid-column: 3; grid-row: 4;">Character D</div>
+            <div class="charbox" style="grid-column: 4; grid-row: 4;">Character E</div>
+            <div class="charbox" style="grid-column: 5; grid-row: 4;">Character F</div>
+            <div class="charbox" style="grid-column: 6; grid-row: 4;">Character C</div>
+          </div>
+          
+          
+        </div>
+    <script src="JavaScript/index.js"></script>
+</body>
+</html>

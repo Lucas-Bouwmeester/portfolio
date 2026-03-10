@@ -185,3 +185,139 @@ window.addEventListener("touchend", (e) => {
   touchStartY = 0;
   touchEndY = 0;
 });
+
+// General: Compass-map
+  function openCompass() {
+    document.getElementById('compass-popup').style.display = 'block';
+    document.getElementById('compass').style.display = 'none';
+  }
+
+  function closeCompass() {
+    document.getElementById('compass-popup').style.display = 'none';
+    document.getElementById('compass').style.display = 'block';
+  }
+
+// Map of Realms: Map workabiltiy
+let mapIsDragging = false;
+let mapStart = { x: 0, y: 0 };
+let mapPosition = { x: 0, y: 0 };
+let mapScale = 0.2;
+
+const mapContainer = document.getElementById("map-container");
+const mapElement = document.getElementById("map");
+
+let currentActiveItem = null; 
+
+function mapUpdateTransform() {
+    mapElement.style.transform = `translate(${mapPosition.x}px, ${mapPosition.y}px) scale(${mapScale})`;
+}
+
+function mapClampPosition() {
+    const containerWidth = mapContainer.clientWidth;
+    const containerHeight = mapContainer.clientHeight;
+    const mapWidth = mapElement.offsetWidth * mapScale;
+    const mapHeight = mapElement.offsetHeight * mapScale;
+
+    const overflowX = Math.max(0, (mapWidth - containerWidth) / 2);
+    const overflowY = Math.max(0, (mapHeight - containerHeight) / 2);
+
+    mapPosition.x = Math.max(-overflowX, Math.min(overflowX, mapPosition.x));
+    mapPosition.y = Math.max(-overflowY, Math.min(overflowY, mapPosition.y));
+}
+
+mapContainer.addEventListener("mousedown", (e) => {
+    mapIsDragging = true;
+    mapStart.x = e.clientX - mapPosition.x;
+    mapStart.y = e.clientY - mapPosition.y;
+    mapContainer.style.cursor = "grabbing";
+    e.preventDefault();
+});
+
+window.addEventListener("mousemove", (e) => {
+    if (!mapIsDragging) return;
+    mapPosition.x = e.clientX - mapStart.x;
+    mapPosition.y = e.clientY - mapStart.y;
+    mapClampPosition();
+    mapUpdateTransform();
+});
+
+window.addEventListener("mouseup", () => {
+    mapIsDragging = false;
+    mapContainer.style.cursor = "grab";
+});
+
+mapContainer.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const zoomSpeed = 0.0005;
+    const MIN_SCALE = 0.10;
+    const MAX_SCALE = 1;
+    mapScale += -e.deltaY * zoomSpeed;
+    mapScale = Math.min(Math.max(mapScale, MIN_SCALE), MAX_SCALE);
+    mapClampPosition();
+    mapUpdateTransform();
+}, { passive: false });
+
+function mapCenterInit() {
+    const containerWidth = mapContainer.clientWidth;
+    const containerHeight = mapContainer.clientHeight;
+    const mapWidth = mapElement.offsetWidth * mapScale;
+    const mapHeight = mapElement.offsetHeight * mapScale;
+
+    mapPosition.x = (containerWidth - mapWidth) / 2;
+    mapPosition.y = (containerHeight - mapHeight) / 2;
+    mapUpdateTransform();
+}
+mapCenterInit();
+
+function openMap() {
+    const mapPopup = document.getElementById("compass-popup");
+    mapPopup.style.display = "block";
+    mapElement.style.transform = `translate(${mapPosition.x}px, ${mapPosition.y}px) scale(0)`;
+    requestAnimationFrame(() => mapUpdateTransform());
+}
+
+document.querySelectorAll(".map-item").forEach(mapItem => {
+    mapItem.addEventListener("click", () => {
+        const targetId = mapItem.dataset.mapSection;
+        const targetPanel = document.getElementById(targetId);
+        if (!targetPanel) return;
+
+        if (currentActiveItem) currentActiveItem.classList.remove("active");
+
+        mapItem.classList.add("active");
+        currentActiveItem = mapItem;
+
+        if (targetPanel !== currentPanel && !isAnimating) {
+            animateTransition(currentPanel, targetPanel, currentDirection);
+            currentPanel = targetPanel;
+        }
+    });
+});
+
+function updateMapCurrent() {
+    document.querySelectorAll(".map-item").forEach(item => {
+        item.classList.remove("current");
+        const targetId = item.dataset.mapSection;
+        if (currentPanel.id === targetId) {
+            item.classList.add("current");
+        }
+    });
+}
+
+document.querySelectorAll(".map-item").forEach(mapItem => {
+    mapItem.addEventListener("click", () => {
+        const targetId = mapItem.dataset.mapSection;
+        const targetPanel = document.getElementById(targetId);
+        if (!targetPanel) return;
+
+        if (targetPanel !== currentPanel && !isAnimating) {
+            animateTransition(currentPanel, targetPanel, currentDirection);
+            currentPanel = targetPanel;
+        }
+
+        updateMapCurrent();
+    });
+});
+
+updateMapCurrent();
