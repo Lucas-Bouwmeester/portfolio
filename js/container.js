@@ -605,3 +605,120 @@ document.querySelectorAll('.project-trigger').forEach(trigger => {
     document.getElementById(popupId).style.display = 'block';
   });
 });
+
+
+// computer 
+
+const glitchedFrame = document.getElementById('frame');
+const glitchedCanvas = document.getElementById('noise');
+const glitchedCtx = glitchedCanvas.getContext('2d');
+const glitchedTear = document.getElementById('tear');
+const glitchedBlock = document.getElementById('block');
+const glitchedUI = document.getElementById('ui');
+const glitchedStartText = document.getElementById('startText');
+const glitchedViewer = document.getElementById('viewer');
+const glitchedInfo = document.getElementById('info');
+const glitchedIframe = document.getElementById('projectFrame');
+
+function glitchedResize() {
+  glitchedCanvas.width = glitchedFrame.clientWidth;
+  glitchedCanvas.height = glitchedFrame.clientHeight;
+}
+glitchedResize();
+window.addEventListener('resize', glitchedResize);
+
+// noise
+setInterval(() => {
+  const img = glitchedCtx.createImageData(glitchedCanvas.width, glitchedCanvas.height);
+  const buf = new Uint32Array(img.data.buffer);
+
+  for (let i = 0; i < buf.length; i++) {
+    buf[i] = Math.random() > 0.5 ? 0xffffffff : 0xff000000;
+  }
+
+  glitchedCtx.putImageData(img, 0, 0);
+}, 50);
+
+// glitch effects
+function glitchedTearBurst() {
+  const y = Math.random() * glitchedCanvas.height;
+  const shift = (Math.random() - 0.5) * 100;
+
+  glitchedTear.style.top = y + 'px';
+  glitchedTear.style.opacity = 1;
+
+  glitchedFrame.style.clipPath =
+    `polygon(0 0,100% 0,100% ${y}px,calc(100% + ${shift}px) ${y}px,calc(100% + ${shift}px) 100%,0 100%)`;
+
+  setTimeout(() => {
+    glitchedTear.style.opacity = 0;
+    glitchedFrame.style.clipPath = 'none';
+  }, 80);
+}
+
+function glitchedBlockGlitch() {
+  const w = Math.random() * 150 + 50;
+  const h = Math.random() * 40 + 10;
+  const x = Math.random() * (glitchedCanvas.width - w);
+  const y = Math.random() * (glitchedCanvas.height - h);
+
+  glitchedBlock.style.cssText = `
+    width:${w}px;
+    height:${h}px;
+    left:${x}px;
+    top:${y}px;
+    display:block;
+  `;
+
+  setTimeout(() => glitchedBlock.style.display = 'none', 60);
+}
+
+setInterval(() => {
+  if (Math.random() > 0.7) glitchedTearBurst();
+  if (Math.random() > 0.75) glitchedBlockGlitch();
+}, 120);
+
+// open UI
+glitchedFrame.addEventListener('click', () => {
+  if (glitchedUI.style.display === 'flex') return;
+
+  for (let i = 0; i < 10; i++) {
+    setTimeout(() => {
+      glitchedTearBurst();
+      glitchedBlockGlitch();
+    }, i * 40);
+  }
+
+  setTimeout(() => {
+    glitchedStartText.style.display = 'none';
+    glitchedUI.style.display = 'flex';
+  }, 300);
+});
+
+// switch projects
+document.querySelectorAll('.choice').forEach(glitchedBtn => {
+  glitchedBtn.addEventListener('click', (glitchedEvent) => {
+    glitchedEvent.stopPropagation();
+
+    const glitchedSrc = glitchedBtn.dataset.src;
+    const glitchedText = glitchedBtn.dataset.info;
+
+    glitchedViewer.classList.add('glitch');
+
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        glitchedTearBurst();
+        glitchedBlockGlitch();
+      }, i * 30);
+    }
+
+    setTimeout(() => {
+      glitchedIframe.src = glitchedSrc;
+      glitchedInfo.textContent = glitchedText;
+    }, 120);
+
+    setTimeout(() => {
+      glitchedViewer.classList.remove('glitch');
+    }, 220);
+  });
+});

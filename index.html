@@ -209,9 +209,9 @@
 
                 <div class="arrow" style="left:29.5%; bottom:26.5%; rotate: 90deg;">➜</div>
 
-                <div class="map-item" data-map-section="studyRoom" style="left:25.5%; bottom:20%;">
+                <div class="map-item" data-map-section="cursedComputer" style="left:25.5%; bottom:20%;">
                     <!-- <div class="map-ascii-icon"></div> -->
-                    <div class="map-title">Study room</div>
+                    <div class="map-title">Cursed Computer</div>
                     <div class="map-description">- My projects</div>
                 </div>
 
@@ -288,8 +288,8 @@
                 </div>
                 
                <div class="context-container">
-                    <div id="context" onclick="startContext()" data-dir="south">
-                        <pre>
+                    <div id="context">
+                        <pre onclick="startContext()">
                                                 &&&&                                                
                                                 &&&&                                                
                                                 &&&&                                                
@@ -332,6 +332,41 @@
                                                          
                         </pre>
                     </div>
+                </div>
+
+                <div class="continue-container">
+                    <pre data-dir="south">
+                                                                                                                                                                                                   
+                                                                                                                                                                           
+                     @@@@@                      @@  @@                                                                                                                
+                    @@@                         @@  @@    @@                                   @@   @@                                                                
+                          @@@    @@@@  @@@@  @@@@@  @@  @@   @@@@  @@@@     @@@@  @@@@@  @@@  @@  @@@@      @@@  @@  @@   @@  @@@@@                                           
+                           @@@ @@     @/   @@   @@ @@  @@    @@  @@  @@   @@    @@   @@ @@ @ @@   @@   @@  @@ @ @@  @@   @@  @@__                                           
+                  @@   @@ @@     @    @@   @@ @@  @@    @@  @@  @@   @@    @@   @@ @@  @@@   @@   @@  @@  @@@  @@   @@  @@                                        
+                     @@@@@   @@@@  @     @@@@@  @@  @@    @@   @@@@     @@@@  @@@@@  @@   @@   @@   @@  @@   @@   @@@@@   @@@@@                                       
+                                                                                                                                                                        
+                                                                                                                                                                        
+                                                                                                                                                                        
+                                                                                                                                                                        
+                                                                                  
+                                                                         @@@@@                                                                                          
+                                                                       @@@   @@@                                                                                        
+                                                                      @@  @@@  @@                                                                                       
+                                                                     @@   @@@   @@                                                                                      
+                                                                     @@         @@                                                                                      
+                                                                     @@         @@                                                                                      
+                                                                     @@         @@                                                                                      
+                                                                     @@         @@                                                                                      
+                                                                      @@       @@                                                                                       
+                                                                        @@@@@@@                                                                                         
+
+
+                                                                           @                                                                                            
+                                                                       @@  @  @@                                                                                        
+                                                                         @@@@@                                                                                          
+                                                                           @                                                                                            
+                                                                                                                                                                        
+                    </pre>
                 </div>
 
                 <div id="context-overlay">
@@ -394,7 +429,56 @@
                         -->
                         
                         <div id="popup">
-                            <p style="text-align: left;"> RoM = Realm of Monsters</p>
+                                    <p style="text-align: left;"> RoM = Realm of Monsters</p>
+                        <br><h1>02-04-2026</h1>
+                                <h2>[Homepage]</h2>
+                                    <p>Fixed: continue sign ASCII</p>
+
+                                <h2>[Cursed Computer page]</h2>
+                                    <p>Reworked: Colors to the links "Webapplication" and "Github"</p>
+                        <br><h1>30-03-2026</h1>
+                                <h2>[!!SYNTAX REWORK!!]</h2>
+                                    <p>Study hall -> Cursed Computer</p>
+                                
+                                <h2>[Map of Realms]</h2>
+                                    <p>Fixed: Text "Study room" to "Cursed Computer"</p>
+
+                                <h2>[Information page]</h2>
+                                    <p>Reworked: Information in "PERSONAL FILE"</p>
+                                    <p>Fixed: Buttons in "PERSONAL FILE" not being scrollable in a to small window</p>
+                                
+                                <h2>[Internship Building page]</h2>
+                                    <p>Fixed: ASCII "Study room" to "Computer"</p>
+                                
+                                <h2>REWORKED [Cursed Computer page]</h2>
+                                    <p>Removed: Study room</p>
+                                    <p>Removed: Door button "north"</p>
+                                    <p>New: Cursed Computer</p>
+                                    <p>New: Glitch effects</p>
+                                    <p>Reworked: Projects layout</p>
+                                    <p>Reworked: Projects design</p>
+                                    <p>New: Button to "Internship Building" mouse</p>
+                                    
+                        <br><h1>21-03-2026</h1>
+                                <h2>[Information page]</h2>
+                                    <p>Reworked: CV</p>
+
+                        <br><h1>18-03-2026</h1>
+                                <h2>[Homepage]</h2>
+                                    <p>New: Continue sign</p>
+                                    <p>Reworked: Button "South" to continue sign</p>
+                                    <p>Reworked: Context positioning</p>
+                                    
+                                <h2>[Internship Building page]</h2>
+                                    <p>New: Button '1' text</p>
+
+                        <br><h1>15-03-2026</h1>
+                                <h2>[General]</h2>
+                                    <p>New: Onload alert</p>
+                                
+                                <h2>[Information page]</h2>
+                                    <p>New: Hint for dialogue</p>
+
                         <br><h1>10-03-2026</h1>
                                 <h2>[General]</h2>
                                     <p>Fixed: Direction East is "E" instead of "O"</p>
@@ -1002,7 +1086,9 @@
             data-north="homepage">
             <div class="information-container" id="gust-container">
                 <div class="information">
-                    <div id="textBox" data-dir="south" onclick="nextText()">Hey there! You are probably wondering how I ended up in this situation.</div>
+                    <div id="textBox" data-dir="south" onclick="nextText()">Hey there! You are probably wondering how I ended up in this situation.
+                        <div class="help-text">"Click on the textbox to continue dialogue"</div>
+                    </div>
                     <div class="pre-container">
                     <pre class="cliff">
                                                                                                                                             ██████████████████████████████████████▓▓▓██▓███████▓█████████████████████████              
@@ -1250,7 +1336,7 @@
                                         <br><br>Gender: Male
                                     </p>
 
-                                      <a href="files/CV-Lucas-Bouwmeester.pdf" target="_blank">
+                                      <a href="files/CV_Lucas-Bouwmeester.pdf" target="_blank">
                                     <button class="copy">
                                         <pre>
                                             
@@ -1424,7 +1510,7 @@
                                                 <p>As previously stated, my name is Lucas Bouwmeester and I am from the Netherlands. I was born on March 20th 2008.</p>
                                                 <p>I grew up in Dordrecht. A decently big city, that is located south of Rotterdam.</p>
                                                 <p>I live with my parents, sister and a pet cat. I attented a local primary and secondary school and decided to study in Rotterdam for a change of pace.</p>
-                                                <p>I currently work part-time as a restocker at a local grocery store. I've been working there for about 3 years now. Once I turn 18, I will be promoted to a shift leader.</p>
+                                                <p>I currently work part-time at a grocery store. I've been working there for about 3 years now. I started out as a restocker and since recently I got promoted to shift leader.</p>
                                                 <p>I've played many sports over the years. I did track for 2 years and I played hockey for around a year. But the one that stuck with me the most was volleyball. I used to play volleyball for 6 years, but I quit because it got too competitive for me. Quiting volleyball is, to this day, the worst mistake I have made, so I'm looking to join a club once again.</p>
                                         </div>
 
@@ -1445,6 +1531,8 @@
                                                     <li>Reading</li>
                                                     <li>Watching movies/shows</li>
                                                     <li>Working out</li>
+                                                    <li>Cooking</li>
+                                                    <li>Sleeping</li>
                                                     <li>Bouldering</li>
                                                     <li>Coding</li>
                                                     <li>Designing</li>
@@ -1935,7 +2023,7 @@ ________________||____________________(/_______________||_____
 
         <section id="internshipBuilding" class="panel"
             data-east="crossroadOfRealms"
-            data-south="studyRoom"
+            data-south="cursedComputer"
             data-west="interview"
             data-north="nothing">
 
@@ -2349,6 +2437,14 @@ Elevator opening
            @@@@@@         @@@@@@
                @@@@@@@@@@@@@
                             </pre>
+                            <pre class="button1-text">
+@@@    @@  @@@@@@  @@@@@@ @@   @@ @@@@@@ @@@    @@  @@@@@@ 
+@@@@   @@ @@    @@   @@   @@   @@   @@   @@@@   @@ @@    @@
+@@ @@  @@ @@    @@   @@   @@   @@   @@   @@ @@  @@ @@
+@@  @@@@@ @@    @@   @@   @@@@@@@   @@   @@  @@@@@ @@   @@@
+@@    @@@ @@    @@   @@   @@   @@   @@   @@    @@@ @@    @@
+@@     @@  @@@@@@    @@   @@   @@ @@@@@@ @@     @@  @@@@@@@
+                            </pre>
 
                             <pre class="button0 elevatorButton" data-dir="east">
                 @@@@@@@@@@@                         
@@ -2409,12 +2505,12 @@ Elevator opening
 
                             </pre>
                             <pre class="button-1-text">
-@@@@@@ @@@@@@ @@    @@ @@@@@  @@    @@   @@@@@@   @@@@@@   @@@@@@  @@@     @@@
-@@@      @@   @@    @@ @@  @@  @@  @@    @@   @@ @@    @@ @@    @@ @@@@   @@@@
-@@@@@    @@   @@    @@ @@   @@  @@@@     @@   @@ @@    @@ @@    @@ @@ @@ @@ @@
-  @@@@   @@   @@    @@ @@   @@   @@      @@@@@@  @@    @@ @@    @@ @@  @@@  @@
-   @@@   @@   @@    @@ @@  @@    @@      @@  @@  @@    @@ @@    @@ @@   @   @@
-@@@@@@   @@   @@@@@@@@ @@@@@     @@      @@   @@  @@@@@@   @@@@@@  @@       @@
+ @@@@@@  @@@@@@  @@@     @@@ @@@@@@  @@    @@ @@@@@@ @@@@@@ @@@@@@
+@@      @@    @@ @@@@   @@@@ @@   @@ @@    @@   @@   @@     @@   @@
+@@      @@    @@ @@ @@ @@ @@ @@   @@ @@    @@   @@   @@     @@   @@
+@@      @@    @@ @@  @@@  @@ @@@@@@  @@    @@   @@   @@@@@  @@@@@@
+@@      @@    @@ @@       @@ @@      @@    @@   @@   @@     @@  @@
+ @@@@@@  @@@@@@  @@       @@ @@       @@@@@@    @@   @@@@@@ @@   @@
                             </pre>
 
                         </pre>
@@ -2440,83 +2536,121 @@ Elevator opening
             </div>
         </section>
 
-        <section style="background-color: white;" id="studyRoom" class="panel"
+        <section style="background-color: white;" id="cursedComputer" class="panel"
             data-north="internshipBuilding">
-            <div class="studyRoom-container">
+            <div class="cursedComputer-container">
                 <div class="study-room-container">
                     <pre>
-████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████	
-█                          ███                                                                                                                                    ██████████████████████            
-█                             ███                                                                                                                               ███   ██              ██
-█                                ███                                                                                                                          ██ ██   ██              ██   
-█                                   ███                                                                                                                     ██  ████  ██              ██  
-█                                      ███                                                                                                                ██   █████████████████████████  
-█                                         ███                                                                                                          ███     █████████████████████████
-█                                            ███                                                                                                    ███        █   ██                 ██ 
-█                                               ███                                                                                              ███           █   ██                 ██ 
-█                                                  ███                                                                                        ███              █   ██                 ██ 
-█                                                     ████████████████████████████████████████████████████████████████████████████████████████                 █   ██                 ██ 
-█                                                      █                                                                                    █                  █   ██                 ██  
-█                                                      █                                                                                    █                  ███ ██                 ██    
-█                                                      █                                              ███████████    ███████████            █                  █████████████████████████     
-█                                                      █                                             ██████████ █   ██████████ █            █                  █████████████████████████
-█             █████                                    █       █████████████████████████             █ █      █ █   █ █      █ █            █                  █   ██                 ██  
-█             █    █████                               █       █ █          █          █             █ █      █ █   █ █      █ █            █                  █   ██                 ██  
-█             █         █████                          █       █ █          █          █             █ █      █ █   █ █      █ █            █                  █   ██                 ██  
-█             █              ████                      █       █ █          █          █             ██████████ █   ██████████ █            █                  █   ██                 ██ 
-█             █                  ██████                █       █ █          █          █              ███████████    ███████████            █                  █   ██                 ██ 
-█             █                    █  █                █       █ █          █          █                                                    █                  ███ ██                 ██
-█             █                    █  █                █       █ █          █          █                                                    █                  █████████████████████████ 
-█             █                    █  █                █       █ █          █          █                                                    █                  █████████████████████████ 
-█             █                    █  █                █       █ █          █          █                                                    █                  █   ██                 ██ 
-█             █                    █  █                █       █ █          █          █          ██████████████████████████████            █                  █   ██                 ██ 
-█             █                    █  █                █       █ █          █          █          █ █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█            █                  █   ██                 ██ 
-█             █                    █  █                █       █ █          █          █          █ █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█            █                  █   ██                 ██ 
-█             █                    █  █                █       █ █          █          █          █ █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█            █                  █   ██                 ██ 
-█             █                    █  █                █       █ █          █          █          █ █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█            █                  ███ ██                 ██  
-█             █                    █  █                █       █ █          █          █          █ █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█            █                  █████████████████████████ 
-█             █                    █  █                █       █████████████████████████          █ █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█            █                   ████████████████████████
-█             █                    █  █                █                                          ██████████████████████████████            █                     █   ██              ██ 
-█             █                    █  █                █                                                   ▒   █████                        █                     █   ██              ██ 
-█             █ ███                █  █                █                                                   ▒ █████████                      █                     █   ██              ██ 
-█             █ █ █                █  █                ██████████████████████████████████████████████████████████████████████████████████████                     █   ██              ██  
-█             █ ███                █  █            █████                                                 █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█  ▒              █████                  ██  ██              ██ 
-█             █ █ █                █  █         ███    █                                                                                        ███                ██ ██              ██ 
-█             █ ███                █  █       █████████████████████████████████████████████████████████████████████████████████████████████████████████             ████████████████████   
-█             █ █ █                █  █       █     ██ █ █                   █     ▒▒▒▒     █                  █ █  █    █                █           ██████          ██████████████████ 
-█             █ ███                █  █       █     ██ █ █                   ████████████████                  █ █  █    █               █                 ███████                     █ 
-█             █                    █  █       █     ██ █ █                   █     ▒▒▒▒     █                  █ █  █    █              █                        ███████               █ 
-█             █                    █  █       █     ██ █ █                   ████████████████                  █ █  █    █  ██████████████                             ██████          █  
-█             █                    █  █       █     ██████████████████████████     ▒▒▒▒     ████████████████████ █  █    █ █              ████                               ██████    █ 
-█             █                    █  █       █     ██                       ████████████████                   ██  █    ███                  ████                                ██████ 
-█             █                    █  █       █   ███                        █     ▒▒▒▒     █                     ███    █ ██                     ██████████████████████████████████████ 
-█             █                    █  █       ████                           ████████████████                        █████   ██                     ████                               █
-█             █                    █  █    ███                                                                           █     ██                   █   ██████                         █          
-█             █                   ███ █ ███          ███████████████████████████████████████████████████████████         ██      ██                 █         ██████                   █            
-█             █                 ██   ███            ██                                                         ██          ██      ██               █               ██████             █             
-█             █              ███  ███             ██                                                            ██           ██      ██             █                     █████        █            
-█             █           ███   ██              ██                                                               ██            ██      ██           █                          █████   █       
-█             █        ███   ███              ██                                                                  ██             ██      ██         █████                           ████ 
-█             █     ███   ███               ██                                                                     ██              ██      ██       █    ████                          █
-█             █  ███   ███                ██                                                                        ██               ██      ██     █        ████                      █
-█             ███   ███                 ██                                                                           ██                ██      ██   █            ████                  █ 
-█             █  ███                  ██                                                                              ██                 ██      ██ █                ████              █
-█             ███                   ██                                                                                 ██                  ██      ██████                ████          █       
-█          ███                    ██                                                                                    ██                   ██     █    ████                ████      █
-█       ███                     ██                                                                                       ██                    ██   █        ████                ████  █
-█    ███                      ██                                                                                          ██                     ██ █            ████                ███
-█ ███                       ██                                                                                             ██                      ██                ████              █
-██                        ██                                                                                                ██                       ███                 ████          █
-█                       ██                                                                                                   ██                         ███                  ████      █
-█                     ██                                                                                                      ██                           ███                   ████  █
-█                   ██                                                                                                         ██                             ███                    ███              
-████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                        
-               <div class="projects-container">
-                <div class="project-title">
-                    PROJECTS
-                </div>
-                <div class="project">
-<div class="project-trigger gachiakuta" data-popup="gachiakuta-popup"><pre>
+	██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████	
+	█                                                                                                                                                                                                        █
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █ 
+	█                                                                                                                                                                                                        █             
+	██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+                                                                                                ██████████████████████████████
+										                ██████████████████████████████
+										                ██████████████████████████████
+										                ██████████████████████████████
+										                ██████████████████████████████
+										                ██████████████████████████████
+									          █████████████████████████████████████████████████████████
+									          █████████████████████████████████████████████████████████</pre>          
+<div class="frame" id="frame">
+
+  <canvas id="noise"></canvas>
+
+  <div class="content" style="text-align: center; line-height: 1.8
+  ;" id="startText">
+    click to open projects<br>Click multiple times to open a project if needed<br>This is computer is about to break as you can see
+  </div>
+
+  <div class="ui" id="ui">
+
+    <div class="top">
+      <div class="viewer" id="viewer">
+        <iframe id="projectFrame" src="about:blank"></iframe>
+      </div>
+
+      <div class="info" id="info">waiting for input</div>
+    </div>
+
+    <div class="bottom">
+
+      <div class="choice" data-src="https://101716.stu.sd-lab.nl/portfolio/files/projects/GACHIAKUTA/" data-info="General info: 
+      Type: Frontend, UI/UX
+      Written in: HTML, CSS & JavaScript
+      Status: Unfinished
+      Group: individually
+      Duration: 6 hours / 1 allnighter
+      
+      Description:
+      Gachiakuta is an anime/manga that is getting quite popular since recently.
+      I found a concept idea and design online for a Gachiakuta: Fighting game and decided to recreate the frontend of the game.
+      
+      (the site doesn't work optimal for small devices)">
+      
+        <pre style="font-size: 0.35vw;">
+            
+    <a style="font-size: 0.75rem; text-decoration: none; color: rgb(227, 60, 48)" href="https://101716.stu.sd-lab.nl/portfolio/files/projects/GACHIAKUTA/" target="_blank">Webapplication</a>  <a style="font-size: 0.75rem; text-decoration: none; color: rgb(68, 162, 255);" href="https://github.com/Lucas-Bouwmeester/GACHIAKIUTA" target="_blank">Github</a>
+
 #-----------------------------------------------------------------------------------------#
 | #######   ###   ##### ##  ## ##   ###   ##   ## ##  ##    # ########## # ### ###        |
 | ##       ## ##  ##    ##  ## ##  ## ##  ## ##   ##  ##  ## ###  # # # ## ### ### #      |
@@ -2541,26 +2675,26 @@ Elevator opening
 | #  @@  @   @  @    @     #                @@@                        @@  @@@@  @@@@@@@  |
 | #    @  @@@   @    @     #              @@@                           @@@@     @     @  |
 | ##########################              @@                           @@  @@    @@@@@@@  |
-#-----------------------------------------------------------------------------------------#</pre></div>
-   <div id="gachiakuta-popup" class="project-popup">
-                            <h1>Gachiakuta: Fighting game<br>frontend</h1>
-                            <h3 style="position: relative; top: -3.2vw;">General info:</h3>
-                            <p style="position: relative; top: -5.2vw;">Type: Frontend, UI/UX</p>
-                            <p style="position: relative; top: -7.2vw;">Written in: HTML, CSS & JavaScript</p>
-                            <p style="position: relative; top: -9.2vw;">Status: Unfinished</p>
-                            <p style="position: relative; top: -11.2vw;">Group: individually</p>
-                            <p style="position: relative; top: -13.2vw;">Duration: 6 hours / 1 allnighter</p>
-                            <h3 style="position: relative; top: -14.2vw;">Description:</h3>
-                            <p style="position: relative; top: -16.2vw;">Gachiakuta is an anime/manga that is getting quite<br>popular since recently.</p>
-                            <p style="position: relative; top: -18.2vw;">I found a concept idea and design online for a<br>Gachiakuta: Fighting game and decided to recreate<br>the frontend of the game.</p>
-                            <p style="position: relative; top: -19.2vw;"><a href="https://101716.stu.sd-lab.nl/portfolio/files/projects/GACHIAKUTA/" target="_blank">Webapplication</a><br><br><a href="https://github.com/Lucas-Bouwmeester/GACHIAKIUTA" target="_blank">Github</a></p>
-                            <h4 style="position: relative; top: -20.2vw;">(the site doesn't work optimal for small devices)</h4>
-                            <div class="iframe">
-                            <iframe style="position: relative;  top: -21.7vw;" src="https://101716.stu.sd-lab.nl/portfolio/files/projects/GACHIAKUTA/" title="Gachiakuta" width="100%" height="40%"></iframe>
-                            <p style="position: relative;  top: -22.7vw;"><a href="https://www.instagram.com/p/DP2guLcDNh4" target="_blank">Reference link</a></p>
-                            </div>
-    </div>
-<div class="project-trigger MP" data-popup="MP-popup"><pre>
+#-----------------------------------------------------------------------------------------#
+        </pre>
+      </div>
+
+      <div class="choice" data-src="https://101716.stu.sd-lab.nl/portfolio/files/projects/MP/" data-info="General info:
+      Type: Backend, Game, Vibecoding
+      Written in: HTML, CSS & JavaScript
+      Status: Unfinished
+      Group: individually
+      Duration: 5 days ish
+      
+      Description:
+      I had freetime during a schoolbreak so I decided to make a little Rythme Fighting videogame.
+      This was the first project I vibecoded. I stopped worked on this project since I figured out that I really dislike vibecoding.
+      
+      (the site isn't responsive, check the link)">
+        <pre style="font-size: 0.35vw;">
+  
+    <a style="font-size: 0.75rem; text-decoration: none; color: rgb(143, 143, 143);" href="https://101716.stu.sd-lab.nl/portfolio/files/projects/MP/" target="_blank">Webapplication</a>  <a style="font-size: 0.75rem; text-decoration: none; color: rgb(68, 162, 255);" href="https://github.com/Lucas-Bouwmeester/MP" target="_blank">Github</a>
+
 #-----------------------------------------------------------------------------------------#
 |                                                                                         |
 |                                                                                         |
@@ -2585,29 +2719,46 @@ Elevator opening
 |        ######                     ######    	######     ###### ##   ## ##   ## #####   |
 |                                                                                         |
 |                                                                                         |
-|                                                                                         |
-#-----------------------------------------------------------------------------------------#</pre></div>
-                        <div id="MP-popup" class="project-popup">
-                            <h1>MP Rythme Fighting game </h1>
-                            <h3 style="position: relative; top: -3.2vw;">General info:</h3>
-                             <p style="position: relative; top: -5.2vw;">Type: Backend, Game, Vibecoding</p>
-                              <p style="position: relative; top: -7.2vw;">Written in: HTML, CSS & JavaScript</p>
-                            <p style="position: relative; top: -9.2vw;">Status: Unfinished</p>
-                            <p style="position: relative; top: -11.2vw;">Group: individually</p>
-                            <p style="position: relative; top: -13.2vw;">Duration: 5 days ish</p>
-                            <h3 style="position: relative; top: -14.2vw;">Description:</h3>
-                             <p style="position: relative; top: -16.2vw;">I had freetime during a schoolbreak so I decided<br>to make a little Rythme Fighting videogame.</p>
-                             <p style="position: relative; top: -18.2vw;">This was the first project I vibecoded. I stopped<br>worked on this project since I figured out that I<br>really dislike vibecoding.</p>
-                             <p style="position: relative; top: -19.2vw;"><a href="https://101716.stu.sd-lab.nl/portfolio/files/projects/MP/" target="_blank">Webapplication</a><br><br><a href="https://github.com/Lucas-Bouwmeester/MP" target="_blank">Github</a></p>
-                            <h4 style="position: relative; top: -20.2vw;">(the site doesn't isn't responsive, check the link)</h4>
-                             <div class="iframe">
-                            <iframe style="position: relative;  top: -21.7vw;" src="https://101716.stu.sd-lab.nl/portfolio/files/projects/MP/" title="Gachiakuta" width="100%" height="40%"></iframe>
+#-----------------------------------------------------------------------------------------#
+        </pre>
+      </div>
+
+      <div class="choice" data-src="about:blank" data-info="no input available">
+        no input available
+      </div>
+
+      <div class="choice" data-src="about:blank" data-info="no input available">
+        no input available
+      </div>
+
+    </div>
+  </div>
+
+  <div class="tear" id="tear"></div>
+  <div class="block" id="block"></div>
+  <div class="scanlines"></div>
+
+</div>
+                        <div class="up-container">
+                            <pre data-dir="north">
+                                                                           @
+                                                                         @@@@@
+                                                                       @@  @  @@
+                                                                           @
+                                                                           @
+
+                                                                         @@@@@                                                                                          
+                                                                       @@@   @@@                                                                                        
+                                                                      @@  @@@  @@                                                                                       
+                                                                     @@   @@@   @@                                                                                      
+                                                                     @@         @@                                                                                      
+                                                                     @@         @@                                                                                      
+                                                                     @@         @@                                                                                      
+                                                                     @@         @@                                                                                      
+                                                                      @@       @@                                                                                       
+                                                                        @@@@@@@                                                                                            
+                            </pre>
                         </div>
-              
-                </div>
-                
-                <div class="door-button door" data-dir="north"></div>
-                    </pre>
                 </div>
             </div>
         </section>
@@ -2718,13 +2869,18 @@ Elevator opening
          <!--beforeRealm 1-->
         <!-- Door--> <audio id="soundDoor" src="files/sounds/Door-Opening-Sound-Effect.mp3" preload="auto"></audio>
         <!-- Elevator buttons--> <audio id="soundelevatorButton" src="files/sounds/ELEVATOR-DOOR-SOUND-EFFECT - FREE.mp3" preload="auto"></audio> 
+   
     <script src="js/container.js"></script>
     <script src="js/index.js"></script>
        <script src="js/sound.js"></script>
-       <!-- <script>
-        window.onload = function () {
-            alert("WARNING: My portfolio works only on MacOS without any positioning problems. On other computer systems like Windows some positioning could be off. It also doesn't work on phone ;)");
-            };
-       </script> -->
+       <script>
+     window.onload = function () {
+            alert("Note before entering:\n\n" +
+                "This portfolio doesn't work on all browsers and devices.\n\n" +
+                "Right now, it works 100% on Google Chrome on MacOS desktop.\n\n" +
+                "I will make it more compatible in the near future.\n\n" +
+                "It doesn't work at all on phone!");
+        };
+       </script>
 </body>
 </html>
